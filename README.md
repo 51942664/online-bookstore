@@ -1,7 +1,7 @@
 # bookstore
 
 > A Vue.js project
-
+node_modules
 ## Build Setup
 
 ``` bash
