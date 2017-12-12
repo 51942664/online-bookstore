@@ -1,10 +1,22 @@
 <template>
   <div id="app">
       <ul class="nav">
-        <router-link :to="{name:'home'}" tag="li" exact>Home</router-link>
-        <router-link :to="{name:'classify'}" tag="li">Classify</router-link>
-        <router-link :to="{name:'shopping'}" tag="li">Shopping</router-link>
-        <router-link :to="{name:'self'}" tag="li">Self</router-link>
+        <router-link :to="{name:'home'}" tag="li" exact>
+          <i class="fa fa-home"></i>
+          <p>Home</p>
+          </router-link>
+        <router-link :to="{name:'classify'}" tag="li">
+          <i class="fa fa-sitemap"></i>
+          <p>Classify</p>
+          </router-link>
+        <router-link :to="{name:'shopping'}" tag="li">
+          <i class="fa fa-shopping-cart"></i>
+          <p>Shopping</p>
+          </router-link>
+        <router-link :to="{name:'self'}" tag="li">
+          <i class="fa fa-user"></i>
+          <p>Self</p>
+          </router-link>
       </ul>
     <router-view/>
   </div>
@@ -35,6 +47,18 @@ export default {
     line-height: 50px;
     border-top: 1px solid #eeeeee;
     cursor: pointer;
+    &.router-link-active{
+      color: rgba(51, 153, 51,0.9);
+    }
+    i{
+      position: relative;
+      top: -10px;
+      font-size: 23px;
+    }
+    p{
+      position: relative;
+      top: -42px;
+    }
   }
 }
 </style>
