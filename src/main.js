@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import bootstrapCss from 'bootstrap-css'
+import fontCss from './styles/fonts/font-awesome.css'
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
