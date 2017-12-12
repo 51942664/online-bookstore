@@ -1,9 +1,7 @@
 # bookstore
 
 > A Vue.js project
-node_modules
 ## Build Setup
-111111
 ``` bash
 # install dependencies
 npm install
