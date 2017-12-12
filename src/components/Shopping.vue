@@ -6,14 +6,15 @@
 
 <script>
 export default {
-  name: 'Shopping',
-  data () {
+  name: "Shopping",
+  data() {
     return {
-      msg: 'shopping'
-    }
+      msg: "shopping"
+    };
   }
-}
+};
 </script>
 
 <style scoped>
+
 </style>
