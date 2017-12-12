@@ -3,8 +3,7 @@
 > A Vue.js project
 
 ## Build Setup
-111111111
-
+111111
 ``` bash
 # install dependencies
 npm install
