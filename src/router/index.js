@@ -6,6 +6,7 @@ import Shopping from '@/components/Shopping'
 import Self from '@/components/Self'
 
 import Settlement from '@/components/Settlement'
+import ReceAddress from '@/components/Rece-address'
 import Data from '@/components/Data'
 
 
@@ -34,15 +35,19 @@ export default new Router({
       component: Self
     },
     {
-<<<<<<< HEAD
       path: '/settlement',
       name: 'settlement',
       component: Settlement
-=======
+    },
+    {
+       path: '/rece-address',
+      name: 'rece-address',
+      component: ReceAddress
+    },
+    {
       path: '/data',
       name: 'data',
       component: Data
->>>>>>> 3e5d677633927eadd9ebbe5bce5ebd18e02867fc
     }
   ]
 })

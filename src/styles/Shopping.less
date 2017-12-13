@@ -1,6 +1,27 @@
 
 @charset "utf-8";
-
+.shopping{
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    header{
+      width: 100%;
+      height: 50px;
+      background: #000;
+      margin-bottom: 10px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 10;
+      h3 {
+        color: #fff;
+        text-align: center;
+        line-height: 50px;
+        font-size: 16px;
+      }
+    }
+}
 ul,li,p {
     margin: 0;
     padding: 0;
@@ -9,13 +30,14 @@ li {
     list-style: none;
 }
 .device {
+    margin-top: 50px;
     width: 100%;
     height: 100%;
     background-color: #eee;
     border-radius: 4px;
     overflow: hidden;
 }
-header {
+section {
     padding: 0 4%;
     position: relative;
     height: 44px;
@@ -81,7 +103,7 @@ header {
     position: relative;
     margin-right: 4%;
     display: block;
-    width: 10%;
+    width: 27%;
     img {
         position: absolute;
         top: 0;
@@ -96,8 +118,9 @@ header {
     margin: auto;
 }
 .goods-title {
-    width: 60%;
+    width: 50%;
     height: 38px;
+    font-size: 20px;
     color: #484ce4;
     line-height: 1.4;
     -webkit-box-orient: vertical;
@@ -107,7 +130,7 @@ header {
     text-overflow: ellipsis;
 }
 .goods-author{
-    width: 60%;
+    width: 50%;
     color: #787992;
     font-size: 18px;
     -webkit-box-orient: vertical;
@@ -163,16 +186,15 @@ header {
 
 .item-selector {
     width: 12%;
-}
-
-.icon-selector {
-    position: relative;
-    margin: 16px auto 0 auto;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    cursor: pointer;
+    .icon-selector {
+        position: relative;
+        margin: 100% auto;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        cursor: pointer;
+    }
 }
 
 .selector-active {

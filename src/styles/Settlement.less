@@ -34,16 +34,17 @@ main{
   width: 90%;
   height: auto;
   margin: 50px auto;
+  padding-bottom: 40px;
   h1{
     font-size: 25px;
     color:#777272;
+    padding: 10px 0;
   }
 }
 .infor-confirm{
   border: 1px solid #ccc;
   width: 100%;
   height: 100%;
-  margin-top: 10px;
   div{
     padding: 0 10px;
     background-color: #fff;
@@ -59,6 +60,9 @@ p{
   margin: 10px 10px;
 }
 .price{
+  span:first-child{
+    color: #909394;
+  }
   span:last-child{
     float: right;
   }
@@ -75,10 +79,55 @@ p{
   }
 }
 .receiv-info{
+  span:first-child{
+    color: #909394;
+  }
   span:last-child{
     display: block;
     width: 70%;
     float: right;
+  }
+  &.address{
+    padding-bottom: 15px;
+  }
+}
+.modification{
+  position: relative;
+  line-height: 50px;
+  padding: 0 20px;
+  color: #000;
+  span:last-child{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url("../assets/3.svg") no-repeat;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+  }
+  svg{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 10px;
+    &.weixin{
+      background: url("../assets/weixin.svg") no-repeat;
+    }
+    &.zhifubao{
+      background: url("../assets/zhifubao.svg") no-repeat;
+    }
+    &.bank-card{
+      background: url("../assets/card.svg")no-repeat;
+    }
+    &.credit-card{
+      background: url("../assets/credit_card.svg")no-repeat;
+    }
+    &.visa{
+      background: url("../assets/visa.svg")no-repeat;
+    }
+  }
+  .f18{
+    font-size: 18px;
   }
 }
 

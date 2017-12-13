@@ -1,14 +1,16 @@
 <template>
   <div class="shopping">
-    {{msg}}
+    <header>
+      <h3>购物车</h3>
+    </header>
     <div class="device" id="page-cart">
-        <header>
+        <section>
             <span class="header-title">购物清单</span>
             <span class="header-edit" @click="toggleDelBtn">
                 <span v-show="!delFlag">编辑</span>
                 <span v-show="delFlag">完成</span>
             </span>
-        </header>
+        </section>
         <div class="page">
             <div class="empty-states" v-if="cart.length === 0">
                 <span>这里是空的，快去逛逛吧</span>    
