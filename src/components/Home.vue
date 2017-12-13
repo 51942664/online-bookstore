@@ -8,9 +8,9 @@
           <div class="swiper-slide">
             <img src="../assets/14.png">
           </div>
-          <div class="swiper-slide">
+          <!-- <div class="swiper-slide">
             <img src="../assets/1.png">
-          </div>
+          </div> -->
           <div class="swiper-slide">
             <img src="../assets/15.png">
           </div>
