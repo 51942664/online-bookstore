@@ -3,19 +3,19 @@
       <ul class="nav">
         <router-link :to="{name:'home'}" tag="li" exact>
           <i class="fa fa-home"></i>
-          <p>Home</p>
+          <p>首页</p>
           </router-link>
         <router-link :to="{name:'classify'}" tag="li">
           <i class="fa fa-sitemap"></i>
-          <p>Classify</p>
+          <p>分类</p>
           </router-link>
         <router-link :to="{name:'shopping'}" tag="li">
           <i class="fa fa-shopping-cart"></i>
-          <p>Shopping</p>
+          <p>购物车</p>
           </router-link>
         <router-link :to="{name:'self'}" tag="li">
           <i class="fa fa-user"></i>
-          <p>Self</p>
+          <p>我</p>
           </router-link>
         <!--资料管理-->
         <router-link :to="{name:'data'}" tag="li">
@@ -34,10 +34,17 @@ export default {
 </script>
 
 <style lang="less">
+body,h1,h2,h3,div,ul,li,p{
+  margin: 0;
+  padding: 0;
+}
 #app {
   font: 20px  'Avenir', Helvetica,'Microsoft YaHei', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+ul{
+  list-style: none;
 }
 .nav{
   width: 100%;
@@ -53,6 +60,9 @@ export default {
     line-height: 50px;
     border-top: 1px solid #eeeeee;
     cursor: pointer;
+    position: relative;
+    z-index: 99;
+    background-color: rgb(255,255,255);
     &.router-link-active{
       color: rgba(51, 153, 51,0.9);
     }
@@ -63,8 +73,17 @@ export default {
     }
     p{
       position: relative;
-      top: -42px;
+      top: -38px;
+      font-style: bold;
+      font-size: 16px;
     }
   }
+}
+.bookstore{
+  line-height: 50px;
+  height: 50px;
+  text-align: center;
+  background-color: #000101;
+  color: #fff;
 }
 </style>
