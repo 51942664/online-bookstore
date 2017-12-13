@@ -1,0 +1,113 @@
+/*
+*功能：分类样式设置
+*/
+/******公共样式*******/
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+  font:14px "微软雅黑";
+}
+li{
+  list-style: none;
+}
+/******元件样式设置*******/
+.classify {
+  width: 100%;
+  height: 100%;
+  /******header部分设置*******/
+  header {
+    width: 100%;
+    height: 50px;
+    background: #000;
+    margin-bottom: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    h3 {
+      color: #fff;
+      text-align: center;
+      line-height: 50px;
+      font-size: 16px;
+    }
+  }
+  .sear {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    span {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: url("../assets/1.svg");
+      position: absolute;
+      top: 23%;
+      transform: translate(-50%);
+      left: 10%;
+    }
+    .seacher {
+      display: block;
+      width: 90%;
+      border-radius: 20px;
+      outline: none;
+      border: 1px solid #b9b9b9;
+      margin: 0 auto;
+      padding: 10px 30px;
+      margin-bottom: 10px;
+    }
+  }
+  /******列表设置*******/
+  main {
+    margin-top: 65px;
+    ul {
+      width: 90%;
+      height: auto;
+      margin: 0 auto;
+      li {
+        width: 100%;
+        padding: 10px 0;
+        position: relative;
+        border-bottom: 1px solid #e7e7e7;
+        div:first-child {
+          width: 30%;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .tilte_li {
+          width: 65%;
+          position: absolute;
+          right: 0;
+          top: 23px;
+          cursor: pointer;
+          h4 {
+            color: #3366CC;
+            font-size: 16px;
+            margin-bottom: 8px;
+            cursor: pointer;
+          }
+          p:last-child {
+            font-size: 18px;
+            margin-top: 15px;
+            color: red;
+          }
+        }
+        .svg_img {
+          position: relative;
+          span {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: url("../assets/3.svg") no-repeat;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}
