@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Classify from '@/components/Classify'
 import Shopping from '@/components/Shopping'
 import Self from '@/components/Self'
+import Settlement from '@/components/Settlement'
 
 
 Vue.use(Router)
@@ -29,6 +30,11 @@ export default new Router({
       path: '/self',
       name: 'self',
       component: Self
+    },
+    {
+      path: '/settlement',
+      name: 'settlement',
+      component: Settlement
     }
   ]
 })
