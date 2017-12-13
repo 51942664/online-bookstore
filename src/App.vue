@@ -61,4 +61,11 @@ export default {
     }
   }
 }
+.bookstore{
+  line-height: 50px;
+  height: 50px;
+  text-align: center;
+  background-color: #000101;
+  color: #fff;
+}
 </style>
