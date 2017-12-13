@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import Details from './Details'
 import BookList from './BookList';
 import SwiperCss from "swiper/dist/css/swiper.css";
 import Swiper from "swiper";
@@ -47,7 +48,8 @@ require("./../scripts/home");
 export default {
   name: "Home",
   components:{
-    BookList
+    BookList,
+    Details
   },
   data() {
     return {
