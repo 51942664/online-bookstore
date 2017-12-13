@@ -3,7 +3,7 @@
         <div>
             <h3>新书上架</h3>
             <ul>
-                <li v-for="(booklist,index) in newbook" :key="booklist.id" @click="details(index)">
+                <li v-for="(booklist,index) in newbook" :key="booklist.id" @click="$emit('details',index,$event.target)">
                     <div>
                         <img :src="booklist.img">
                         <p class="name">{{booklist.name}}</p>
@@ -15,7 +15,7 @@
         <div>
             <h3>编辑推荐</h3>
             <ul>
-                <li v-for="booklist in eidtbook" :key="booklist.id" @click="details(index)">
+                <li v-for="booklist in eidtbook" :key="booklist.id" @click="$emit('details')">
                     <div>
                         <img :src="booklist.img">
                         <p class="name">{{booklist.name}}</p>
@@ -27,7 +27,7 @@
         <div>
             <h3>热门新书</h3>
             <ul>
-                <li v-for="booklist in hotbook" :key="booklist.id" @click="details(index)">
+                <li v-for="booklist in hotbook" :key="booklist.id" @click="$emit('details')">
                     <div>
                         <img :src="booklist.img">
                         <p class="name">{{booklist.name}}</p>
@@ -39,14 +39,13 @@
     </div>
 </template>
 <script>
-    export default {
-        name: "BookList",
-        props: ['newbook', 'eidtbook', 'hotbook'],
-        data() {
-            return {
-            };
-        }
-    };
+export default {
+  name: "BookList",
+  props: ["newbook", "eidtbook", "hotbook"],
+  data() {
+    return {};
+  }
+};
 </script>
 <style lang="less">
 @import "./../styles/booklist.less";
