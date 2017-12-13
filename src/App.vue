@@ -17,6 +17,11 @@
           <i class="fa fa-user"></i>
           <p>Self</p>
           </router-link>
+        <!--资料管理-->
+        <router-link :to="{name:'data'}" tag="li">
+          <i class="fa fa-user"></i>
+          <p>Data</p>
+          </router-link>
       </ul>
     <router-view/>
   </div>
@@ -40,6 +45,7 @@ export default {
   display: flex;
   position: fixed;
   bottom: 0;
+  z-index: 10;
   li{
     width: 25%;
     text-align: center;
