@@ -61,7 +61,7 @@ ul{
     border-top: 1px solid #eeeeee;
     cursor: pointer;
     position: relative;
-    z-index: 99;
+    z-index: 9999999999;
     background-color: rgb(255,255,255);
     &.router-link-active{
       color: rgba(51, 153, 51,0.9);
