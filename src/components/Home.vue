@@ -32,16 +32,14 @@
         :newbook="newBook"
         :eidtbook="eidtBook"
         :hotbook="hotBook"
-        @details = "details"
         />
     </div>
-    <Details/>
+
   </div>
 </template>
 
 <script>
 import BookList from './BookList';
-import Details from './Details'
 import SwiperCss from "swiper/dist/css/swiper.css";
 import Swiper from "swiper";
 
@@ -49,8 +47,7 @@ require("./../scripts/home");
 export default {
   name: "Home",
   components:{
-    BookList,
-    Details
+    BookList
   },
   data() {
     return {
@@ -83,6 +80,7 @@ export default {
         var $this = this;
             axios.get("./../../static/homeData.json").then(
                 function(response){
+                  console.log(response.data)
                    $this.newBook = response.data.newBook;
                    $this.eidtBook = response.data.eidtBook;
                    $this.hotBook = response.data.hotBook;

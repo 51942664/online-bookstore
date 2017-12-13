@@ -29,10 +29,10 @@
                     </div>
                     <div class="goods-info">
                         <p class="goods-title">{{ item.name }}</p>
-                        <p class="goods-author">{{item.author}}</p>
                         <div class="goods-price">
                             <span>¥<b>{{ item.price }}</b></span>
                         </div>
+                        <span class="des">库存{{ item.stock }}件</span>
                         <div class="goods-num">
                             <div class="num-btn" @click="changeQty(true, item)">+</div>
                             <input class="show-num" type="number" :value=item.quantity>
@@ -77,9 +77,7 @@ export default {
     cart: [{
         id: 1001,
         name: 'JavaScript高级程序设计',
-        describe:"《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
         price: 558,
-        author:"Nicholas C. Zakas",
         type: 4,
         quantity: 1,
         subtotal: 558,
@@ -99,9 +97,10 @@ export default {
          * @param {Number} index 商品下标
          */
         changeQty: function (isAdd, item) {
-            var num = item.quantity;
+            var num = item.quantity,
+                stock = item.stock;
 
-            if (isAdd && num < 5) {
+            if (isAdd && num < stock) {
                 this.$set(item, 'quantity', ++num);
             } else if (!isAdd && num > 1) {
                 this.$set(item, 'quantity', --num);
