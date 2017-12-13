@@ -1,0 +1,66 @@
+@charset 'utf-8';
+.home{
+    width: 100%;
+    height: auto;
+    h2{
+        width: 100%;height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 0.9em;
+        background-color:rgba(0,0,0,0.9) ;
+        color: rgba(255,255,255,0.9);
+    }
+    .main{
+        height:e("calc(100% - 100px)");
+        .swiper-container {
+            width: 100%;
+            height: 174px;
+            .swiper-slide{
+                width: 100%;
+                height:100%;
+                img{
+                    width: 100%;
+                    height:100%;
+                }
+            }
+        }
+        .swiper-button-next,.swiper-button-prev{
+           width: 40px;
+           height: 40px;
+        }
+        .activity{
+            overflow: hidden;
+            width: 100%;
+            height:40px;
+            font-size: 0.8em;
+            padding:5px 0  5px 20px;
+            border-bottom: 1px solid #eeeeee;
+            line-height: 30px;
+            display: flex;
+            align-items: center;
+            i{
+                margin-right: 10px;
+                color: #f80;
+            }
+            div{
+                overflow: hidden;
+                span{
+                    white-space: nowrap;
+                    width: 100%;
+                    position: relative;
+                    right: -100%;
+                    animation: late 6s linear infinite;
+                }
+                @keyframes late {
+                    0%{
+                        right: -100%;
+                    }
+                    100%{
+                        right: 100%;
+                    }
+                }
+            }
+            
+        }  
+    }
+}
