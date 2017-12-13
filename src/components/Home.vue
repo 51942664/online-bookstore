@@ -8,9 +8,9 @@
           <div class="swiper-slide">
             <img src="../assets/14.png">
           </div>
-          <div class="swiper-slide">
+          <!-- <div class="swiper-slide">
             <img src="../assets/1.png">
-          </div>
+          </div> -->
           <div class="swiper-slide">
             <img src="../assets/15.png">
           </div>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import Details from './Details'
 import BookList from './BookList';
 import SwiperCss from "swiper/dist/css/swiper.css";
 import Swiper from "swiper";
@@ -47,7 +48,8 @@ require("./../scripts/home");
 export default {
   name: "Home",
   components:{
-    BookList
+    BookList,
+    Details
   },
   data() {
     return {
