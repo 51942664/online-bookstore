@@ -1,0 +1,92 @@
+@charset "utf-8";
+.login{
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    position: relative;
+    header{
+      width: 100%;
+      height: 50px;
+      background: #000;
+      margin-bottom: 10px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 10;
+      h3 {
+        color: #fff;
+        text-align: center;
+        line-height: 50px;
+        font-size: 16px;
+      }
+    }
+}
+main{
+    width: 100%;
+    height: 800px;
+    position: absolute;
+    top: -793px;
+    background-color: #fff;
+    z-index: 11;
+    .b-login{
+        border-bottom: 1px solid #ccc;
+        span{
+            width: 35%;
+            display: inline-block;
+            text-align: center;
+            margin: 0px 27px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 24px;
+        }
+    }
+    .form-login{
+        .b-login{
+            height: 70px;
+            text-align: center;
+            svg{
+                width: 30px;
+                height: 30px;
+                position: relative;
+                top: 30px;
+                &.tel{
+                  background: url("../assets/tel.svg") no-repeat;
+                }
+                &.user{
+                    background: url("../assets/user.svg") no-repeat;
+                }
+                &.lock{
+                    background: url("../assets/password.svg") no-repeat;
+                }
+                &.pwd{
+                    background: url("../assets/password_1.svg") no-repeat;
+                }
+            }
+            input{
+                border-color: transparent;
+                outline:none;
+                outline: none;
+                display: inline-block;
+                width: 70%;
+                height: 40px;
+                position: relative;
+                top: 15px;
+                left: 10px;
+            }
+            button{
+                outline: none;
+                border-color: transparent;
+                border-radius: 5px;
+                background-color: #4a9e4a;
+                width: 95%;
+                height: 50px;
+                line-height: 50px;
+                margin-top: 20px;
+                &:hover{
+                    background-color: #69cf69;
+                }
+            }
+        }
+    }
+}
