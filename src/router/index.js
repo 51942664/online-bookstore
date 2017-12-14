@@ -8,6 +8,7 @@ import Self from '@/components/Self'
 import Settlement from '@/components/Settlement'
 import ReceAddress from '@/components/Rece-address'
 import Data from '@/components/Data'
+import Address from '@/components/Address'
 
 
 Vue.use(Router)
@@ -48,6 +49,11 @@ export default new Router({
       path: '/data',
       name: 'data',
       component: Data
-    }
+    },
+	  {
+	  path: '/address',
+	  name: 'address',
+	  component: Address
+	}
   ]
 })
