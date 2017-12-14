@@ -9,7 +9,7 @@ import Settlement from '@/components/Settlement'
 import ReceAddress from '@/components/Rece-address'
 import Data from '@/components/Data'
 import Address from '@/components/Address'
-
+import DetailsPage from '@/components/DetailsPage'
 
 Vue.use(Router)
 
@@ -54,6 +54,11 @@ export default new Router({
 	  path: '/address',
 	  name: 'address',
 	  component: Address
+  },
+  {
+	  path: '/detailsPage',
+	  name: 'detailsPage',
+	  component: DetailsPage
 	}
   ]
 })
