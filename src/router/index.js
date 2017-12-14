@@ -5,6 +5,7 @@ import Classify from '@/components/Classify'
 import Shopping from '@/components/Shopping'
 import Self from '@/components/Self'
 import Data from '@/components/Data'
+import Address from '@/components/Address'
 
 
 Vue.use(Router)
@@ -35,6 +36,11 @@ export default new Router({
       path: '/data',
       name: 'data',
       component: Data
-    }
+    },
+	  {
+	  path: '/address',
+	  name: 'address',
+	  component: Address
+	}
   ]
 })

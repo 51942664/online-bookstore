@@ -22,7 +22,12 @@
           <i class="fa fa-user"></i>
           <p>Data</p>
           </router-link>
-      </ul>
+		  <!--收货地址管理-->
+		  <router-link :to="{name:'address'}" tag="li">
+			  <i class="fa fa-user"></i>
+			  <p>Address</p>
+		  </router-link>
+	  </ul>
     <router-view/>
   </div>
 </template>
