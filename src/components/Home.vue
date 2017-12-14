@@ -40,9 +40,10 @@
       date="出版日期" 
       v-if="show" 
       :describe = bookdetails
-
       @close="close" />
     </transition>
+    
+     
   </div>
 </template>
 
@@ -51,10 +52,10 @@ import Describe from "./Describe";
 import BookList from "./BookList";
 import SwiperCss from "swiper/dist/css/swiper.css";
 import Swiper from "swiper";
-
 require("./../scripts/home");
 export default {
   name: "Home",
+  props: ['test'],
   components: {
     BookList,
     Describe
