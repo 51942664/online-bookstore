@@ -26,7 +26,7 @@
                    <span>{{describe.day}}</span>
                 </p>
                 <div>
-                    <span>详情</span>
+                    <router-link :to="{name:'detailsPage'}" tag="a">详情</router-link>
                     <i>&gt;</i>
                 </div>
             </div>
@@ -50,24 +50,25 @@
         <button type="button" :class="{'active' : col}" @click="addcssstyle">加入购物车</button>
          <button type="button" :class="{'active' : !col}" @click="addcssstyle">立即购买</button>
     </div>
+   
     </div>
-    
 </template>
 <script>
 export default {
   name: "Describe",
-        props: ['author','page','booknum','date','describe'],
-        data() {   
-            return {
-                col:true
-            };
-        },methods:{
-            addcssstyle(){
-                this.col = !this.col
-            }
-        }
-}
+  props: ["author", "page", "booknum", "date", "describe","test"],
+  data() {
+    return {
+      col: true
+    };
+  },
+  methods: {
+    addcssstyle() {
+      this.col = !this.col;
+    }
+  }
+};
 </script>
 <style lang="less">
-@import './../styles/describe.less';
+@import "./../styles/describe.less";
 </style>
