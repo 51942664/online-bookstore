@@ -26,17 +26,25 @@
     <footer>
       <button>退出登录</button>
     </footer>
+    <Login
+      head-title="登录/注册"
+    />
   </div>
 </template>
 
 <script>
+import Login from "./Login"
 export default {
   name: 'Self',
+  components:{
+    Login
+  },
   data () {
     return {
       msg: 'self'
     }
-  }
+  },
+  
 }
 </script>
 
