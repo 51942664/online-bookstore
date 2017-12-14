@@ -8,9 +8,9 @@
           <div class="swiper-slide">
             <img src="../assets/14.png">
           </div>
-          <!-- <div class="swiper-slide">
+          <div class="swiper-slide">
             <img src="../assets/1.png">
-          </div> -->
+          </div>
           <div class="swiper-slide">
             <img src="../assets/15.png">
           </div>
@@ -22,41 +22,40 @@
         <div class="swiper-button-prev"></div>
       </div>
       <!-- 活动 -->
-        <div class="activity">
-          <i class="fa fa-bullhorn fa-lg"></i>
-          <div>
-            <span>{{activity}}</span>
-          </div>
+      <div class="activity">
+        <i class="fa fa-bullhorn fa-lg"></i>
+        <div>
+          <span>{{activity}}</span>
         </div>
-        <BookList
-        :newbook="newBook"
-        :eidtbook="eidtBook"
-        :hotbook="hotBook"
-        />
+      </div>
+      <BookList :newbook="newBook" :eidtbook="eidtBook" :hotbook="hotBook" @details="showDetails" />
     </div>
-
+    <transition name="fade">
+      <BookDetails author="作者" page="页数" booknum="书号" date="出版日期" v-if="show" @close="close" />
+    </transition>
   </div>
 </template>
 
 <script>
-import Details from './Details'
-import BookList from './BookList';
+import BookDetails from "./BookDetails";
+import BookList from "./BookList";
 import SwiperCss from "swiper/dist/css/swiper.css";
 import Swiper from "swiper";
 
 require("./../scripts/home");
 export default {
   name: "Home",
-  components:{
+  components: {
     BookList,
-    Details
+    BookDetails
   },
   data() {
     return {
       activity: "双12全场图书低至1折，更有隐藏神秘惊喜",
       newBook: [],
       eidtBook: [],
-      hotBook: []
+      hotBook: [],
+      show: false
     };
   },
   methods: {
@@ -78,29 +77,44 @@ export default {
         }
       });
     },
-      obtainData(){
-        var $this = this;
-            axios.get("./../../static/homeData.json").then(
-                function(response){
-                  console.log(response.data)
-                   $this.newBook = response.data.newBook;
-                   $this.eidtBook = response.data.eidtBook;
-                   $this.hotBook = response.data.hotBook;
-                }
-            ).catch(
-                function(error){
-                    console.error("程序猿睡着了0.0")
-                }
-            )
-        }
+    obtainData() {
+      var $this = this;
+      axios
+        .get("./../../static/homeData.json")
+        .then(function(response) {
+          console.log(response.data);
+          $this.newBook = response.data.newBook;
+          $this.eidtBook = response.data.eidtBook;
+          $this.hotBook = response.data.hotBook;
+        })
+        .catch(function(error) {
+          console.error("程序猿睡着了0.0");
+        });
+    },
+    showDetails(idx,tag) {
+      this.show = !this.show;
+      console.log(idx);
+      console.log(tag.nextElementSibling);
+    },
+    close() {
+      this.show = !this.show;
+    }
   },
   mounted() {
     this.runSwiper();
-    this. obtainData();
+    this.obtainData();
   }
 };
 </script>
 
 <style lang="less" scoped>
 @import "../styles/home.less";
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.6s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

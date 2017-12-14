@@ -1,0 +1,154 @@
+/*
+*功能：结算中心样式设置
+*/
+/******公共样式*******/
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+  font:14px "微软雅黑";
+}
+.settlement{
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+header{
+  width: 100%;
+  height: 50px;
+  background: #000;
+  margin-bottom: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  h3 {
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+  }
+}
+main{
+  width: 90%;
+  height: auto;
+  margin: 50px auto;
+  padding-bottom: 40px;
+  h1{
+    font-size: 25px;
+    color:#777272;
+    padding: 10px 0;
+  }
+}
+.infor-confirm{
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 100%;
+  div{
+    padding: 0 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+  }
+}
+h2{
+  font-size: 23px;
+  color: #111;
+  font-weight: bold;
+}
+p{
+  margin: 10px 10px;
+}
+.price{
+  span:first-child{
+    color: #909394;
+  }
+  span:last-child{
+    float: right;
+  }
+}
+.order-total{
+  span{
+    font-size: 18px;
+    color: #111;
+    font-weight: bold;
+  }
+  span:last-child{
+    float: right;
+    color: #f36868;
+  }
+}
+.receiv-info{
+  span:first-child{
+    color: #909394;
+  }
+  span:last-child{
+    display: block;
+    width: 70%;
+    float: right;
+  }
+  &.address{
+    padding-bottom: 15px;
+  }
+}
+.modification{
+  position: relative;
+  line-height: 50px;
+  padding: 0 20px;
+  color: #000;
+  span:last-child{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url("../assets/3.svg") no-repeat;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+  }
+  svg{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 10px;
+    &.weixin{
+      background: url("../assets/weixin.svg") no-repeat;
+    }
+    &.zhifubao{
+      background: url("../assets/zhifubao.svg") no-repeat;
+    }
+    &.bank-card{
+      background: url("../assets/card.svg")no-repeat;
+    }
+    &.credit-card{
+      background: url("../assets/credit_card.svg")no-repeat;
+    }
+    &.visa{
+      background: url("../assets/visa.svg")no-repeat;
+    }
+  }
+  .f18{
+    font-size: 18px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
