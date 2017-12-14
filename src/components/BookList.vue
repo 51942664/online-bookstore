@@ -3,7 +3,7 @@
         <div>
             <h3>新书上架</h3>
             <ul>
-                <li v-for="(booklist,index) in newbook" :key="booklist.id" @click="$emit('details',index,$event.target)">
+                <li v-for="(booklist,index) in newbook" :key="booklist.id" @click="$emit('details',index,'newBook')">
                     <div>
                         <img :src="booklist.img">
                         <p class="name">{{booklist.name}}</p>
@@ -15,7 +15,7 @@
         <div>
             <h3>编辑推荐</h3>
             <ul>
-                <li v-for="booklist in eidtbook" :key="booklist.id" @click="$emit('details')">
+                <li v-for="(booklist,index) in eidtbook" :key="booklist.id" @click="$emit('details',index,'eidtBook')">
                     <div>
                         <img :src="booklist.img">
                         <p class="name">{{booklist.name}}</p>
@@ -27,7 +27,7 @@
         <div>
             <h3>热门新书</h3>
             <ul>
-                <li v-for="booklist in hotbook" :key="booklist.id" @click="$emit('details')">
+                <li v-for="(booklist,index) in hotbook" :key="booklist.id" @click="$emit('details',index,'hotBook')">
                     <div>
                         <img :src="booklist.img">
                         <p class="name">{{booklist.name}}</p>
