@@ -27,7 +27,7 @@
 			  <i class="fa fa-user"></i>
 			  <p>Address</p>
 		  </router-link>
-	  </ul>
+	  </ul> 
     <router-view/>
   </div>
 </template>
@@ -91,4 +91,5 @@ ul{
   background-color: #000101;
   color: #fff;
 }
+
 </style>
