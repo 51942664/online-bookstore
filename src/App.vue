@@ -17,11 +17,10 @@
           <i class="fa fa-user"></i>
           <p>我</p>
           </router-link>
-	  </ul>
+	  </ul> 
     <router-view/>
   </div>
 </template>
-
 <script>
 export default {
   name: 'app'
@@ -81,4 +80,5 @@ ul{
   background-color: #000101;
   color: #fff;
 }
+
 </style>

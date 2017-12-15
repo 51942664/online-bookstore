@@ -4,19 +4,19 @@
       <h3>购物车</h3>
     </header>
     <div class="device" id="page-cart">
-        <section>
-            <span class="header-title">购物清单</span>
-            <span class="header-edit" @click="toggleDelBtn">
-                <span v-show="!delFlag">编辑</span>
-                <span v-show="delFlag">完成</span>
-            </span>
-        </section>
+        
         <div class="page">
             <div class="empty-states" v-if="cart.length === 0">
                 <span>这里是空的，快去逛逛吧</span>    
             </div>
             <ul class="goods-list cart-list" v-else>
-
+                <section>
+                    <span class="header-title">购物清单</span>
+                    <span class="header-edit" @click="toggleDelBtn">
+                    <span v-show="!delFlag">编辑</span>
+                    <span v-show="delFlag">完成</span>
+                    </span>
+                </section>
                 <li class="goods-item" v-for="(item, index) in cart" :key="item.id">
                     <div class="item-selector">
                         <div class="icon-selector" v-bind:class="{'selector-active': item.checked}" @click="selectGoods(item)">
@@ -30,8 +30,8 @@
                         <img v-bind:src="item.img" v-bind:alt="item.name">
                     </div>
                     <div class="goods-info">
-                        <p class="goods-title">{{ item.name }}</p>
-                        <p class="goods-author">{{item.author}}</p>
+                        <p class="goods-title" :title="item.name">{{item.name}}</p>
+                        <p class="goods-author" :title="item.author">{{item.author}}</p>
                         <div class="goods-price">
                             <span>¥<b>{{ item.price }}</b></span>
                         </div>
@@ -58,11 +58,10 @@
                 </div>
                 <span>全选</span>
             </div>
-            <router-link :to="{name: 'settlement'}" class="action-btn buy-btn" tag="div">去结算({{ selectedNum }})</router-link>
+            <router-link :to="{name: 'settlement'}" class="action-btn buy-btn" tag="div" :total-price="totalPrice" >去结算({{ selectedNum }})</router-link>
             <div class="action-btn del-btn" @click="delGoods">删除({{ selectedNum }})</div>
             <div class="total">合计：<span>¥<b>{{ totalPrice }}</b></span></div>
         </div>
-    </div>
     </div>
   </div>
 </template>
@@ -72,24 +71,32 @@ export default {
   name: 'Shopping',
   data() {
     return {
-      msg: 'shopping',
-      checkAllFlag: false,
-    selectedNum: 0,
-    delFlag: false,
-    cart: [{
-        id: 1001,
-        name: 'JavaScript高级程序设计',
-        describe:"《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
-        price: 558,
-        author:"Nicholas C. Zakas",
-        type: 4,
-        quantity: 1,
-        subtotal: 558,
-        checked: false,
-        sales: 1872,
-        img: 'src/assets/b1.png'
-    }]
-    // cart: []
+        msg: 'shopping',
+        checkAllFlag: false,
+        selectedNum: 0,
+        delFlag: false,
+        cart: [{
+            name: 'JavaScript高级程序设计',
+            describe:"《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
+            price: 558,
+            author:"Nicholas C. Zakas",
+            quantity: 1,
+            subtotal: 558,
+            checked: false,
+            img: 'src/assets/b1.png'
+        },
+        {
+            id: 1001,
+            name: 'JavaScript高级程序设计',
+            describe:"《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
+            price: 558,
+            author:"Nicholas C. Zakas",
+            quantity: 1,
+            subtotal: 558,
+            checked: false,
+            img: 'src/assets/b1.png'
+        }]
+        // cart: []
     }
     
   },
@@ -100,7 +107,7 @@ export default {
          * @param {Boolean} isAdd 是否增加
          * @param {Number} index 商品下标
          */
-        changeQty: function (isAdd, item) {
+        changeQty(isAdd, item) {
             var num = item.quantity;
 
             if (isAdd && num < 5) {
@@ -116,7 +123,7 @@ export default {
          * @method 选择商品
          * @param {Object} item 商品对象
          */
-        selectGoods: function (item) {
+        selectGoods(item) {
             // 状态值取反，并根据状态值对selectedNum进行加减
             item.checked = !item.checked;
             item.checked ? ++this.selectedNum : --this.selectedNum;
@@ -129,7 +136,7 @@ export default {
         /**
          * @method 全选
          */
-        checkAll: function () {
+        checkAll() {
             var self = this;
             this.checkAllFlag = !this.checkAllFlag;
 
@@ -149,14 +156,14 @@ export default {
         /**
          * @method 切换删除按钮
          */
-        toggleDelBtn: function () {
+        toggleDelBtn() {
             this.delFlag = !this.delFlag;
         },
 
         /**
          * @method 删除商品
          */
-        delGoods: function () {
+        delGoods() {
             /**
              * !提示：
              * 每次遍历删除数组元素时，会减少数组长度，所以不能缓存length
@@ -176,12 +183,12 @@ export default {
             this.checkAllFlag = false;
             this.delFlag = !this.delFlag;
         }
-  },
-  computed: {
+    },
+    computed: {
         /**
          * @method 已选商品的总额
          */
-        totalPrice: function () {
+        totalPrice() {
             var num = 0;
             this.cart.forEach(function (item) {
                 item.checked && (num += parseFloat(item.subtotal));

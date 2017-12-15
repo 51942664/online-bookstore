@@ -3,57 +3,129 @@
         {
             "img":"./src/assets/b1.png",
             "name":"JavaScript高级程序设计",
-            "price":"99.50"
+            "describe": "《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。",
+            "describe_2":"《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程...",
+            "price":"99.50",
+            "ISBN":"9787115275790",
+            "page":"616",
+            "day":"2006年6月1日",
+            "author": "Nicholas C. Zakas"
         },{
             "img":"./src/assets/22.jpg",
             "name":"JavaScript权威指南",
-            "price":"50.50"
+            "describe": "本书要讲述的内容涵盖JavaScript语言本身，以及Web浏览器所实现的JavaScript API",
+            "describe_2":"本书更适合有一定编程经验的人阅读。对于那些希望学习JavaScript和已经开始使用JavaScript的程序员来说，如果想让自己对JavaScript语言和Web平台的理解和掌握再上一个台阶，本书最适合不过了",
+            "price":"50.50",
+            "ISBN":"9787111216322",
+            "page":"954",
+            "day":"2007年8月1日",
+            "author": "David Flanagan"
         },{
             "img":"./src/assets/21.jpg",
             "name":"深入理解ES6",
-            "price":"60.50"
+            "describe": "ES6是迄今为止JavaScript内核首当其冲的一次重大更新。本书是领域大家Nicholas C. Zakas撰写的一份ES6的完整指南，书中详细讲解了ES 6在JavaScript对象类型、语法及其他方面激动人心的改变。",
+            "describe_2":"每一章都含有可运行于任何JavaScript环境的示例代码，你可以利用这些代码测试、理解ES6中的新功能。无论你是Web开发者还是Node.js开发者，都可以通过本书来更好地理解和运用ES6，或是顺利地从ES5迁移到ES6。",
+            "price":"60.50",
+            "ISBN":"9787121317989",
+            "page":"396",
+            "day":"2017年7月1日",
+            "author": "Nicholas C. Zakas"
         },{
             "img":"./src/assets/20.jpg",
             "name":"web前端修炼之道",
-            "price":"30.50"
+            "describe":"本书的核心内容是围绕Web前端开发的三大技术要素——HTML、CSS和JavaScript来深入地探讨编写高质量的HTML代码、CSS代码和JavaScript代码的方法、技巧、规范和最佳实践，从而为编写易于维护的Web前端代码打下坚实的基础。",
+            "describe_2":"对于那些中初级水平的读者而言，本书是一本不可多得的内功修炼秘籍。这不是一本单纯的“技术”书籍，没有系统地讲解Web前端开发的基础知识，它更专注于“技巧”，探索如何为“技术”提供最佳“技巧”...",
+            "price":"30.50",
+            "ISBN":"9787111305958",
+            "page":"281",
+            "day":"2010年6月1日",
+            "author":"曹刘阳"
         }
     ],
     "eidtBook":[
         {
             "img":"./src/assets/b1.png",
             "name":"JavaScript高级程序设计",
-            "price":"99.50"
+            "describe": "《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。",
+            "describe_2":"《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信...",
+            "price":"99.50",
+            "ISBN":"9787115275790",
+            "page":"616",
+            "day":"2006年6月1日",
+            "author": "Nicholas C. Zakas"
         },{
             "img":"./src/assets/22.jpg",
             "name":"JavaScript权威指南",
-            "price":"50.50"
+            "describe": "本书要讲述的内容涵盖JavaScript语言本身，以及Web浏览器所实现的JavaScript API",
+            "describe_2":"本书更适合有一定编程经验的人阅读。对于那些希望学习JavaScript和已经开始使用JavaScript的程序员来说，如果想让自己对JavaScript语言和Web平台的理解和掌握再上一个台阶，本书最适合不过了",
+            "price":"50.50",
+            "ISBN":"9787111216322",
+            "page":"954",
+            "day":"2007年8月1日",
+            "author": "David Flanagan"
         },{
             "img":"./src/assets/21.jpg",
             "name":"深入理解ES6",
-            "price":"60.50"
+            "describe": "ES6是迄今为止JavaScript内核首当其冲的一次重大更新。本书是领域大家Nicholas C. Zakas撰写的一份ES6的完整指南，书中详细讲解了ES 6在JavaScript对象类型、语法及其他方面激动人心的改变。",
+            "describe_2":"每一章都含有可运行于任何JavaScript环境的示例代码，你可以利用这些代码测试、理解ES6中的新功能。无论你是Web开发者还是Node.js开发者，都可以通过本书来更好地理解和运用ES6，或是顺利地从ES5迁移到ES6。",
+            "price":"60.50",
+            "ISBN":"9787121317989",
+            "page":"396",
+            "day":"2017年7月1日",
+            "author": "Nicholas C. Zakas"
         },{
             "img":"./src/assets/20.jpg",
             "name":"web前端修炼之道",
-            "price":"30.50"
+            "describe":"本书的核心内容是围绕Web前端开发的三大技术要素——HTML、CSS和JavaScript来深入地探讨编写高质量的HTML代码、CSS代码和JavaScript代码的方法、技巧、规范和最佳实践，从而为编写易于维护的Web前端代码打下坚实的基础。",
+            "describe_2":"对于那些中初级水平的读者而言，本书是一本不可多得的内功修炼秘籍。这不是一本单纯的“技术”书籍，没有系统地讲解Web前端开发的基础知识，它更专注于“技巧”，探索如何为“技术”提供最佳“技巧”...",
+            "price":"30.50",
+            "ISBN":"9787111305958",
+            "page":"281",
+            "day":"2010年6月1日",
+            "author":"曹刘阳"
         }
     ],
     "hotBook":[
         {
             "img":"./src/assets/b1.png",
             "name":"JavaScript高级程序设计",
-            "price":"99.50"
+            "describe": "《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。",
+            "describe_2":"《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信...",
+            "price":"99.50",
+            "ISBN":"9787115275790",
+            "page":"616",
+            "day":"2006年6月1日",
+            "author": "Nicholas C. Zakas"
         },{
             "img":"./src/assets/22.jpg",
             "name":"JavaScript权威指南",
-            "price":"50.50"
+            "describe": "本书要讲述的内容涵盖JavaScript语言本身，以及Web浏览器所实现的JavaScript API",
+            "describe_2":"本书更适合有一定编程经验的人阅读。对于那些希望学习JavaScript和已经开始使用JavaScript的程序员来说，如果想让自己对JavaScript语言和Web平台的理解和掌握再上一个台阶，本书最适合不过了",
+            "price":"50.50",
+            "ISBN":"9787111216322",
+            "page":"954",
+            "day":"2007年8月1日",
+            "author": "David Flanagan"
         },{
             "img":"./src/assets/21.jpg",
             "name":"深入理解ES6",
-            "price":"60.50"
+            "describe": "ES6是迄今为止JavaScript内核首当其冲的一次重大更新。本书是领域大家Nicholas C. Zakas撰写的一份ES6的完整指南，书中详细讲解了ES 6在JavaScript对象类型、语法及其他方面激动人心的改变。",
+            "describe_2":"每一章都含有可运行于任何JavaScript环境的示例代码，你可以利用这些代码测试、理解ES6中的新功能。无论你是Web开发者还是Node.js开发者，都可以通过本书来更好地理解和运用ES6，或是顺利地从ES5迁移到ES6。",
+            "price":"60.50",
+            "ISBN":"9787121317989",
+            "page":"396",
+            "day":"2017年7月1日",
+            "author": "Nicholas C. Zakas"
         },{
             "img":"./src/assets/20.jpg",
             "name":"web前端修炼之道",
-            "price":"30.50"
+            "describe":"本书的核心内容是围绕Web前端开发的三大技术要素——HTML、CSS和JavaScript来深入地探讨编写高质量的HTML代码、CSS代码和JavaScript代码的方法、技巧、规范和最佳实践，从而为编写易于维护的Web前端代码打下坚实的基础。",
+            "describe_2":"对于那些中初级水平的读者而言，本书是一本不可多得的内功修炼秘籍。这不是一本单纯的“技术”书籍，没有系统地讲解Web前端开发的基础知识，它更专注于“技巧”，探索如何为“技术”提供最佳“技巧”...",
+            "price":"30.50",
+            "ISBN":"9787111305958",
+            "page":"281",
+            "day":"2010年6月1日",
+            "author":"曹刘阳"
         }
     ]
 }

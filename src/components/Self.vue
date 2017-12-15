@@ -28,25 +28,32 @@
     </footer>
 	  <personaldata :displaydata="displaydata" @returnself="returnself"  @colsePerData="colsePerData"></personaldata>
 	  <addressmanage :displayaddress="displayaddress" @returnaddress="returnaddress"  @colseAddress="colseAddress"></addressmanage>
+    <Login 
+      head-title="登录/注册"
+    />
   </div>
 </template>
 
 <script>
+
+import Login from "./Login"
 import personaldata from './PerData'
 import addressmanage from './Address'
 export default {
   name: 'Self',
-	components:{
-		personaldata,
+  components:{
+    Login,
+    personaldata,
 		addressmanage
+  },
 
-	},
   data () {
     return {
 		displaydata:false,
 		displayaddress:false
     }
   },
+
 	methods:{
        //显示个人资料
 		perdata(){

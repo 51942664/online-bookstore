@@ -3,7 +3,7 @@ div,p,button{
     margin: 0;
     padding: 0;
 }
-.details{
+.describeBox{
     position: fixed;
     left: 10px;
     top: 9%;
@@ -80,8 +80,11 @@ div,p,button{
         div{
             font-weight: 400;
             font-size:0.8em;
+            height: 50%;
             color: #a19d9d;
+
             p{
+                width: 100%;
                 margin-bottom: 0;
             }
         }
@@ -118,7 +121,7 @@ div,p,button{
         width: 90%;
         margin: 0 auto;
         position: absolute;
-        bottom: 1px;
+        bottom: 6px;
         padding: 0;
         left: 17px;
         button{
@@ -128,17 +131,14 @@ div,p,button{
             outline: none;
             background-color: rgba(255,255,255,1);
             border: 1px solid #5f5e5e;
-            &:nth-child(1):active{
-                background-color: #eeeeee;
-            }
             &:nth-child(2){
                 border-left: none;
-                background-color: #13722e;
-                color: #ffffff;
+                background-color: rgba(255,255,255,1);
                 margin-left: -4px;
             }
-            .shop:active{
-                border-right-color: #21cf4f;
+            &.active{
+                color: #ffffff;
+                background-color: #189b1f;
             }
         }
     }

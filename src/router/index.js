@@ -6,10 +6,12 @@ import Shopping from '@/components/Shopping'
 import Self from '@/components/Self'
 
 import Settlement from '@/components/Settlement'
+
 import ReceAddress from '@/components/Rece-address'
 import PerData from '@/components/PerData'
-import Address from '@/components/Address'
 
+import Address from '@/components/Address'
+import DetailsPage from '@/components/DetailsPage'
 
 Vue.use(Router)
 
@@ -28,7 +30,10 @@ export default new Router({
     {
       path: '/shopping',
       name: 'shopping',
-      component: Shopping
+      component: Shopping,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path: '/self',
@@ -49,11 +54,17 @@ export default new Router({
       path: '/perData',
       name: 'perData',
       component: PerData
+
     },
 	  {
 	  path: '/address',
 	  name: 'address',
 	  component: Address
+  },
+  {
+	  path: '/detailsPage',
+	  name: 'detailsPage',
+	  component: DetailsPage
 	}
   ]
 })
