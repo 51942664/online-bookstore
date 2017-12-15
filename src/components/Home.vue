@@ -30,8 +30,10 @@
           <span>{{activity}}</span>
         </div>
       </div>
+      <!-- 图书列表组件 -->
       <BookList :newbook="newBook" :eidtbook="eidtBook" :hotbook="hotBook" @details="showDetails" />
     </div>
+    <!-- 描述页 -->
     <transition name="fade">
       <Describe 
       author="作者" 
@@ -95,7 +97,6 @@ export default {
       axios
         .get("./../../static/homeData.json")
         .then(function(response) {
-          console.log(response.data);
           $this.newBook = response.data.newBook;
           $this.eidtBook = response.data.eidtBook;
           $this.hotBook = response.data.hotBook;
@@ -111,7 +112,6 @@ export default {
       console.log(idx);
       axios.get("./../../static/homeData.json").then(function(response){
         $this.bookdetails = response.data[witch][idx];
-        console.log($this.bookdetails)
       }).catch(function(error){
         console.error("程序猿睡着了0.0");
       })
