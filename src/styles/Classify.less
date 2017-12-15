@@ -61,6 +61,7 @@ li{
   /******列表设置*******/
   main {
     margin-top: 65px;
+	margin-bottom: 65px;
     ul {
       width: 90%;
       height: auto;
@@ -68,6 +69,7 @@ li{
       li {
         width: 100%;
         padding: 10px 0;
+	    height: auto;
         position: relative;
         border-bottom: 1px solid #e7e7e7;
         div:first-child {
@@ -81,13 +83,16 @@ li{
           width: 65%;
           position: absolute;
           right: 0;
-          top: 23px;
-          cursor: pointer;
+          top: 20px;
           h4 {
             color: #3366CC;
             font-size: 16px;
             margin-bottom: 8px;
-            cursor: pointer;
+            width: 100%;
+		    overflow: hidden;
+            text-overflow: ellipsis;
+		    white-space: nowrap;
+
           }
           p:last-child {
             font-size: 18px;
@@ -96,7 +101,10 @@ li{
           }
         }
         .svg_img {
-          position: relative;
+            position: relative;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
           span {
             display: inline-block;
             width: 14px;
@@ -104,10 +112,23 @@ li{
             background: url("../assets/3.svg") no-repeat;
             position: absolute;
             right: 0;
-            top: 0;
-          }
+            top: 6px;
+		  }
         }
       }
+	.loadmore{
+		width: 100%;
+		text-align: center;
+		border-bottom: none;
+		span:nth-child(2){
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			background: url("../assets/5.svg");
+			vertical-align: middle;
+		}
+
+	}
     }
   }
 }
