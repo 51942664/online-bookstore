@@ -1,8 +1,9 @@
 <template>
-  <div class="data">
+<transition name="slide-fade">
+  <div class="address perdata" v-if="displayaddress">
     <header>
 		<div>
-			<span>＜</span>
+			<span @click="$emit('returnaddress')">&lt;</span>
 			<h3>收货地址</h3>
 		</div>
     </header>
@@ -52,23 +53,37 @@
     </div>
   </form>
 </main>
-	 <div class="Btn">
-		 <button type="submit" class="btn btn-default">确认地址</button>
+	 <div class="Btn Btn_bt">
+		 <button type="submit" class="btn btn-default" @click="btnclick">确认地址</button>
 	 </div>
+	  <!--弹出框-->
+	  <popups :shw="shw" :informa="modify"></popups>
   </div>
+</transition>
 </template>
 
 <script>
-export default {
-  name: 'Address',
-  data () {
-    return {
-    
-    }
-  }
-}
+	import popups from './Popups'
+	export default {
+		name: 'Address',
+		props:['displayaddress'],
+		components:{
+			popups
+		},
+		data () {
+			return {
+				shw:false,
+				modify:'地址添加或者修改成功',
+			}
+		},
+		methods:{
+			btnclick(){
+				this.shw = true
+			}
+		}
+	}
 </script>
 
 <style scoped lang="less">
-  @import "../styles/Data.less";
+  @import "../styles/PerData.less";
 </style>
