@@ -6,7 +6,10 @@ import Shopping from '@/components/Shopping'
 import Self from '@/components/Self'
 
 import Settlement from '@/components/Settlement'
-import Data from '@/components/Data'
+
+import ReceAddress from '@/components/Rece-address'
+import PerData from '@/components/PerData'
+
 import Address from '@/components/Address'
 import DetailsPage from '@/components/DetailsPage'
 
@@ -43,9 +46,15 @@ export default new Router({
       component: Settlement
     },
     {
-      path: '/data',
-      name: 'data',
-      component: Data
+       path: '/rece-address',
+      name: 'rece-address',
+      component: ReceAddress
+    },
+    {
+      path: '/perData',
+      name: 'perData',
+      component: PerData
+
     },
 	  {
 	  path: '/address',
