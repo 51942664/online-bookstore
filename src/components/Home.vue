@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <h2>掌上书城</h2>
+    <div class="title">
+      <h2>掌上书城</h2>
+    </div>
     <div class="main">
       <!-- 轮播 -->
       <div class="swiper-container">
@@ -31,23 +33,32 @@
       <BookList :newbook="newBook" :eidtbook="eidtBook" :hotbook="hotBook" @details="showDetails" />
     </div>
     <transition name="fade">
-      <BookDetails author="作者" page="页数" booknum="书号" date="出版日期" v-if="show" @close="close" />
+      <Describe 
+      author="作者" 
+      page="页数"
+      booknum="书号"
+      date="出版日期" 
+      v-if="show" 
+      :describe = bookdetails
+      @close="close" />
     </transition>
+    
+     
   </div>
 </template>
 
 <script>
-import BookDetails from "./BookDetails";
+import Describe from "./Describe";
 import BookList from "./BookList";
 import SwiperCss from "swiper/dist/css/swiper.css";
 import Swiper from "swiper";
-
 require("./../scripts/home");
 export default {
   name: "Home",
+  props: ['test'],
   components: {
     BookList,
-    BookDetails
+    Describe
   },
   data() {
     return {
@@ -55,7 +66,9 @@ export default {
       newBook: [],
       eidtBook: [],
       hotBook: [],
-      show: false
+      bookdetails:{},
+      show: false,
+      index:''
     };
   },
   methods: {
@@ -91,10 +104,17 @@ export default {
           console.error("程序猿睡着了0.0");
         });
     },
-    showDetails(idx,tag) {
+    showDetails(idx,witch) {
       this.show = !this.show;
+      this.index = idx;
+     var $this = this;
       console.log(idx);
-      console.log(tag.nextElementSibling);
+      axios.get("./../../static/homeData.json").then(function(response){
+        $this.bookdetails = response.data[witch][idx];
+        console.log($this.bookdetails)
+      }).catch(function(error){
+        console.error("程序猿睡着了0.0");
+      })
     },
     close() {
       this.show = !this.show;

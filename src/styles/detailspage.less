@@ -1,0 +1,145 @@
+.detailsPage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 10;
+    background-color: #eeeeee;
+    .title{
+        width: 100%;
+        height: 50px;
+        h2{
+            width: 100%;height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 0.9em;
+            background-color:rgba(0,0,0,0.9) ;
+            color: rgba(255,255,255,0.9);
+            position: fixed;
+            z-index: 3;
+        }
+        i{
+            display: inline-block;
+            color: #f80;
+            font:normal 1.5em Consolas,Monaco;
+            background: url("./../assets/left.svg") no-repeat;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 10;
+            top: 10px;
+            left: 10px;
+        }
+    }
+    .author{
+        width: 100%;
+        height: auto;
+        padding: 5% 5% 0;
+        display: flex;
+        align-items:top;
+         background-color: #ffffff;
+        div.img{
+            width:35%;
+            height: 134px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .bookdetails{
+            width: 70%;
+          p{
+              padding: 0 0 4% 8%;
+              font-size: 0.7em;
+              color: #a19d9d;
+              span:nth-child(1){
+                  display:inline-block;
+                  width: 56px;
+                text-align: left;
+              }
+              span:last-child{
+                white-space: nowrap;
+                font-size: 0.5rem;
+                &.price{
+                    color: #f80;
+                }
+              }
+          }
+        }
+    }
+    .describe{
+        text-align: left;
+        font-size: 16px;
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: none;
+        font-family: 微软雅黑;
+        color: rgb(0, 0, 0);
+        width: 100%;
+        height: auto;
+        padding:15px 5% 3%;
+        background-color: #ffffff;
+        p{
+            margin-bottom: 15px;
+        }
+        .btn{
+            padding: 0;
+            width: 100%;
+            text-align: left;
+            box-shadow: none;
+            span{
+                display: inline-block;
+                width: 45%;
+                height: 50px;
+                font-size: 1.3em;
+                outline: none;
+                border: 1px solid rgba(0,0,0,0.6);
+                background-color: #ffffff;
+                border-radius: 8px;
+                cursor: pointer;
+                text-align: center;
+                line-height: 50px;
+                &:nth-child(1){
+                    margin-right: 7%;
+                    &:hover{
+                        color: rgba(0,0,0,0.3);
+                    }
+                }
+                &:last-child{
+                    background-color: rgb(28, 180, 61);
+                    color: #ffffff;
+                    border: none;
+                    &:hover{
+                        background-color: rgb(36, 219, 76);
+                    }
+                }
+            }
+        }
+    }
+    .abstract{
+        margin-top: 4%;
+        width: 100%;
+        height: auto;
+        padding: 4% 5% 4%;
+        background-color: #ffffff;
+        div.content{
+            width: 100%;
+            padding: 2%;
+            border: 1px solid #000000;
+            margin-bottom: 6%;
+            position: relative;
+            p{
+                font-size: 0.8em;
+                color: rgba(0,0,0,0.7)
+            }
+            div{
+                position: absolute;
+                top: -12px;
+                left: 20px;
+                background-color: #ffffff;
+                font-size: 16px;
+            }
+        }
+    }   
+}

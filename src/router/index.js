@@ -7,7 +7,8 @@ import Self from '@/components/Self'
 
 import Settlement from '@/components/Settlement'
 import Data from '@/components/Data'
-
+import Address from '@/components/Address'
+import DetailsPage from '@/components/DetailsPage'
 
 Vue.use(Router)
 
@@ -45,6 +46,16 @@ export default new Router({
       path: '/data',
       name: 'data',
       component: Data
-    }
+    },
+	  {
+	  path: '/address',
+	  name: 'address',
+	  component: Address
+  },
+  {
+	  path: '/detailsPage',
+	  name: 'detailsPage',
+	  component: DetailsPage
+	}
   ]
 })
