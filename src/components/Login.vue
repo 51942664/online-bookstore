@@ -168,33 +168,16 @@ export default {
         pwd: this.pwdValue,
         pwsd: this.pwsdValue
       };
-      // function add(infos){
-      //   if(localStorage.info){
-      //     var oArr = JSON.parse(localStorage.info);
-      //   }else{
-      //     oArr = [];
-      //     // var oArr = {
-      //     //   // tel:'',
-      //     //   // name:'',
-      //     //   // pwd:'',
-      //     //   // pwsd:''
-      //     // }
-
-      //   }
-      //   oArr.push(infos)
-      //     localStorage.setItem("info",JSON.stringify(oArr))
-      // }
-      // add(selfObj)
-
 
       function add(infos){
         var arr = [];
         if(localStorage.info){
           arr = JSON.parse(localStorage.info);
+          arr.push(infos)
         }else{
           arr = [];
         }
-        arr.push(infos)
+        
         localStorage.info = JSON.stringify(arr);
       }
       add(self);
