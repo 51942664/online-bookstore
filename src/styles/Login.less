@@ -24,7 +24,7 @@
 }
 main{
     width: 100%;
-    height: 800px;
+    height: 632px;
     position: absolute;
     top: -793px;
     background-color: #fff;
@@ -45,6 +45,9 @@ main{
         .b-login{
             height: 70px;
             text-align: center;
+            &:last-child{
+                border-color: transparent;
+            }
             svg{
                 width: 30px;
                 height: 30px;
@@ -69,10 +72,26 @@ main{
                 outline: none;
                 display: inline-block;
                 width: 70%;
-                height: 40px;
+                height: 30px;
                 position: relative;
-                top: 15px;
+                top: 20px;
                 left: 10px;
+            }
+            .must{
+                position: relative;
+                left: 186px;
+                bottom: 10px;
+                width: 8%;
+                height: 30px;
+                line-height: 35px;
+            }
+            p{
+                width: 77%;
+                position: relative;
+                bottom: 70px;
+                border: 1px solid;
+                margin-left: 92px;
+                text-align: left;
             }
             button{
                 outline: none;
@@ -83,10 +102,15 @@ main{
                 height: 50px;
                 line-height: 50px;
                 margin-top: 20px;
+                font-size: 1.7em;
+                color:#fff;
                 &:hover{
                     background-color: #69cf69;
                 }
             }
+        
+        
         }
+
     }
 }
