@@ -17,21 +17,11 @@
           <i class="fa fa-user"></i>
           <p>我</p>
           </router-link>
-        <!--资料管理-->
-        <router-link :to="{name:'data'}" tag="li">
-          <i class="fa fa-user"></i>
-          <p>Data</p>
-          </router-link>
-		  <!--收货地址管理-->
-		  <router-link :to="{name:'address'}" tag="li">
-			  <i class="fa fa-user"></i>
-			  <p>Address</p>
 		  </router-link>
 	  </ul> 
     <router-view/>
   </div>
 </template>
-
 <script>
 export default {
   name: 'app'
