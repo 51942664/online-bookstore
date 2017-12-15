@@ -17,7 +17,6 @@
           <i class="fa fa-user"></i>
           <p>我</p>
           </router-link>
-		  </router-link>
 	  </ul> 
     <router-view/>
   </div>

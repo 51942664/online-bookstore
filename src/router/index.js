@@ -6,7 +6,6 @@ import Shopping from '@/components/Shopping'
 import Self from '@/components/Self'
 
 import Settlement from '@/components/Settlement'
-import ReceAddress from '@/components/Rece-address'
 import Data from '@/components/Data'
 import Address from '@/components/Address'
 import DetailsPage from '@/components/DetailsPage'
@@ -28,7 +27,10 @@ export default new Router({
     {
       path: '/shopping',
       name: 'shopping',
-      component: Shopping
+      component: Shopping,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
       path: '/self',
@@ -39,11 +41,6 @@ export default new Router({
       path: '/settlement',
       name: 'settlement',
       component: Settlement
-    },
-    {
-       path: '/rece-address',
-      name: 'rece-address',
-      component: ReceAddress
     },
     {
       path: '/data',
