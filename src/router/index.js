@@ -7,7 +7,6 @@ import Self from '@/components/Self'
 
 import Settlement from '@/components/Settlement'
 
-import ReceAddress from '@/components/Rece-address'
 import PerData from '@/components/PerData'
 
 import Address from '@/components/Address'
@@ -44,11 +43,6 @@ export default new Router({
       path: '/settlement',
       name: 'settlement',
       component: Settlement
-    },
-    {
-       path: '/rece-address',
-      name: 'rece-address',
-      component: ReceAddress
     },
     {
       path: '/perData',
