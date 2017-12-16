@@ -12,7 +12,6 @@
 		 <li v-if="hidd">
 			 <span>------------对不起,您输入的内容不存在------------</span>
 		 </li>
-       <li v-for="book in bookFilter" :key="book.id">
        <li v-for="(book,index) in bookList" :key="book.id">
          <router-link :to="{name:'detailsPage',params:{value:getDescribe[index]}}" tag="a"> 
            <div>
@@ -54,7 +53,7 @@ export default {
 		matching:null,
    //加载更多状态
 		loadshow:true,
-		num:4
+		num:4,
       getDescribe:[]
 
     }
@@ -74,7 +73,6 @@ export default {
          this.getDescribe = resopnse.data
       }).catch(function(error){
         console.error("程序员吃饭去了，刷新试试看!!")
-
       })
     },
      //匹配搜索框的值
