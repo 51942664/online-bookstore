@@ -3,7 +3,7 @@
     <header>
       <h3>购物车</h3>
     </header>
-    <div class="device" id="page-cart">
+    <div class="device" id="page-cart" v-if="shoppingShow">
         
         <div class="page">
             <div class="empty-states" v-if="cart.length === 0">
@@ -17,7 +17,7 @@
                     <span v-show="delFlag">完成</span>
                     </span>
                 </section>
-                <li class="goods-item" v-for="(item, index) in cart" :key="item.id">
+                <li class="goods-item" v-for="item in cart" :key="item.id">
                     <div class="item-selector">
                         <div class="icon-selector" v-bind:class="{'selector-active': item.checked}" @click="selectGoods(item)">
                             <svg t="1504061791962" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2922" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12">
@@ -37,7 +37,7 @@
                         </div>
                         <div class="goods-num">
                             <div class="num-btn" @click="changeQty(true, item)">+</div>
-                            <input class="show-num" type="number" :value=item.quantity>
+                            <input class="show-num" type="number" :value="quantity">
                             <div class="num-btn" @click="changeQty(false, item)">-</div>
                         </div>
                     </div>
@@ -70,53 +70,66 @@
 export default {
   name: 'Shopping',
   data() {
+// console.log(arr.length)
     return {
         msg: 'shopping',
         checkAllFlag: false,
         selectedNum: 0,
+        quantity: 1,
         delFlag: false,
-        cart: [{
-            name: 'JavaScript高级程序设计',
-            describe:"《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
-            price: 558,
-            author:"Nicholas C. Zakas",
-            quantity: 1,
-            subtotal: 558,
-            checked: false,
-            img: 'src/assets/b1.png'
-        },
-        {
-            id: 1001,
-            name: 'JavaScript高级程序设计',
-            describe:"《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
-            price: 558,
-            author:"Nicholas C. Zakas",
-            quantity: 1,
-            subtotal: 558,
-            checked: false,
-            img: 'src/assets/b1.png'
-        }]
-        // cart: []
+        shoppingShow:false,
+        // cart: [{
+        //     name: arr.name,
+        //     describe:"《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
+        //     price: arr.price,
+        //     author:arr.author,
+        //     quantity: 1,
+        //     subtotal: 558,
+        //     checked: false,
+        //     img: arr.img
+        // }
+        // {
+        //     id: 1001,
+        //     name: 'JavaScript高级程序设计',
+        //     describe:"《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
+        //     price: 558,
+        //     author:"Nicholas C. Zakas",
+        //     quantity: 1,
+        //     subtotal: 558,
+        //     checked: false,
+        //     img: 'src/assets/b1.png'
+        // }
+        // ]
+        cart: JSON.parse(localStorage.getItem('describe'))
+        
     }
     
   },
   methods: {
-
+      stateQuery(){
+        if(localStorage.getItem('userName')){
+          this.shoppingShow = true;
+        }else{
+            alert("该用户还没登录或注册，请登录或注册")
+          this.$router.push({
+              path: "/self"
+            });
+        }
+      },
         /**
          * @method 增减单品数量
          * @param {Boolean} isAdd 是否增加
          * @param {Number} index 商品下标
          */
         changeQty(isAdd, item) {
-            var num = item.quantity;
-
+            var num = this.quantity;
             if (isAdd && num < 5) {
                 this.$set(item, 'quantity', ++num);
             } else if (!isAdd && num > 1) {
                 this.$set(item, 'quantity', --num);
             }
 
-            this.$set(item, 'subtotal', (item.price * num).toFixed(1));
+            this.$set(item,(item.price * num).toFixed(1));
         },
 
         /**
@@ -174,15 +187,14 @@ export default {
             this.cart = cart.filter(function (item) {
                 return !item.checked
             });
-            // for (var i = 0; i < cart.length; i++) {
-            //     cart[i].checked && cart.splice(i--, 1);
-            // };
-
             // 重置 被选商品数量、全选状态、删除状态
             this.selectedNum = 0;
             this.checkAllFlag = false;
             this.delFlag = !this.delFlag;
         }
+    },
+    mounted(){
+        this.stateQuery();
     },
     computed: {
         /**
@@ -191,7 +203,8 @@ export default {
         totalPrice() {
             var num = 0;
             this.cart.forEach(function (item) {
-                item.checked && (num += parseFloat(item.subtotal));
+                // console.log(this.quantity)
+                item.checked && (num += parseFloat(item.price));
             });
             return num;
         }
