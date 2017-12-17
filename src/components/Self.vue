@@ -7,7 +7,7 @@
         <div></div>
         <div>
           <img src="../../src/assets/12.png">
-          <p>{{userName}}</p>
+          <p>从来不吃草莓</p>
         </div>
         <div class="main-count">
 		  <p @click="perdata">设置个人资料 <span></span></p>
@@ -28,7 +28,7 @@
     </footer>
 	  <personaldata :displaydata="displaydata" @returnself="returnself"  @colsePerData="colsePerData" address = "收货地址"></personaldata>
 	  <addressmanage :displayaddress="displayaddress" @returnaddress="returnaddress"  @colseAddress="colseAddress"></addressmanage>
-    <Login 
+    <Login
       head-title="登录/注册"
     />
   </div>
@@ -42,23 +42,22 @@ import addressmanage from './Address'
 export default {
   name: 'Self',
   components:{
-    Login,
-    personaldata,
-		addressmanage
+       Login,
+       personaldata,
+	   addressmanage
   },
-
   data () {
     return {
+        //个人资料显示状态
 		displaydata:false,
-    displayaddress:false,
-    userName:""
+       //地址管理显示状态
+		displayaddress:false;
     }
   },
-
 	methods:{
        //显示个人资料
 		perdata(){
-		    this.displaydata = true
+		    this.displaydata = true;
 		},
        //显示修改地址
 		csreceipt(){
@@ -76,6 +75,7 @@ export default {
 		    this.displaydata = false
 		},
 		colseAddress(){
+
 			this.displaydata = false
     },
     getUserName(){
@@ -88,6 +88,7 @@ export default {
 	},mounted(){
     this.getUserName();
   }
+
 }
 </script>
 <style scoped lang="less">

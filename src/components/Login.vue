@@ -1,5 +1,5 @@
 <template>
-  <div class="login" v-if="showLogin" >
+  <div class="login" v-if="showLogin">
     <header>
       <h3>{{headTitle}}</h3>
     </header>
@@ -52,6 +52,7 @@
         </div>
       </form>
     </main>
+    </main>
   </div>
 </template>
 
@@ -85,13 +86,6 @@
       };
     },
     methods: {
-      stateQuery(){
-        if(localStorage.getItem('userName')){
-          this.showLogin = false;
-        }else{
-          this.showLogin = true;
-        }
-      },
       tab() {
         this.isShow1 = true;
         this.isShow2 = false;
@@ -140,7 +134,7 @@
           this.pwsdTips = false;
         }
       },
-      //注册页面当点击确认按钮把值传入本地存储   
+      //当点击确认按钮把值传入本地存储
       setLocal() {
         const self = this;
         var selfObj = {
@@ -159,10 +153,7 @@
           userInfoData = JSON.stringify(userInfoData);
           localStorage.setItem('signUpUserInfo', userInfoData);
         }
-        //获取本地存储的数据
-        var loginInfo = localStorage.getItem("signUpUserInfo");
-        //把数据转换成数组
-        var arr = JSON.parse(loginInfo);
+
         // 判断注册界面的两次密码是否输入一致
         if (this.telValue != "" && this.pwdValue != "" && this.pwsdValue != "") {
           if (this.pwdValue != this.pwsdValue) {
@@ -178,7 +169,6 @@
             this.$router.push({
               path: "/"
             });
-            localStorage.setItem('userName',this.nameValue);
             add(selfObj);
             this.telValue = "",
               this.nameValue = "",
@@ -195,13 +185,15 @@
           alert("账号和密码不能为空");
         }
       },
-      //登录界面的实现方法
-      loginLocal() { 
+      loginLocal() {
+
         var local = this;
         var loginObj = {
           phone: local.phoneValue,
           pawd: local.pawdValue
         };
+
+
         //获取本地存储的数据
         var loginInfo = localStorage.getItem("signUpUserInfo");
 
@@ -231,9 +223,6 @@
           this.pawdValue = "";
         }
       }
-    },
-    mounted(){
-      this.stateQuery()
     }
   };
 </script>

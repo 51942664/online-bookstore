@@ -3,7 +3,7 @@
     <header>
       <h3>购物车</h3>
     </header>
-    <div class="device" id="page-cart" v-if="shoppingShow">
+    <div class="device" id="page-cart">
         
         <div class="page">
             <div class="empty-states" v-if="cart.length === 0">
@@ -74,22 +74,12 @@ export default {
         msg: 'shopping',
         checkAllFlag: false,
         selectedNum: 0,
-        delFlag: false,
+
         shoppingShow:false,
         cart: JSON.parse(localStorage.getItem('describe'))
-    } 
   },
   methods: {
-      stateQuery(){
-        if(localStorage.getItem('userName')){
-          this.shoppingShow = true;
-        }else{
-            alert("该用户还没登录或注册，请登录或注册")
-          this.$router.push({
-              path: "/self"
-            });
-        }
-      },
+
         /**
          * @method 增减单品数量
          * @param {Boolean} isAdd 是否增加
@@ -97,12 +87,13 @@ export default {
          */
         changeQty(isAdd, item) {
             var num = item.quantity;
+
                 if (isAdd && num < 5) {
                 this.$set(item,'quantity', ++num);
                 } else if (!isAdd && num > 1) {
                     this.$set(item,'quantity',--num);
                 }
-            this.$set(item,'subtotal',(item.price * num).toFixed(1));
+
         },
 
         /**
@@ -160,14 +151,15 @@ export default {
             this.cart = cart.filter(function (item) {
                 return !item.checked
             });
+            // for (var i = 0; i < cart.length; i++) {
+            //     cart[i].checked && cart.splice(i--, 1);
+            // };
+
             // 重置 被选商品数量、全选状态、删除状态
             this.selectedNum = 0;
             this.checkAllFlag = false;
             this.delFlag = !this.delFlag;
         }
-    },
-    mounted(){
-        this.stateQuery();
     },
     computed: {
         /**
@@ -176,7 +168,6 @@ export default {
         totalPrice() {
             var num = 0;
             this.cart.forEach(function (item) {
-                // console.log(this.quantity)
                 item.checked && (num += parseFloat(item.subtotal));
             });
             return num;

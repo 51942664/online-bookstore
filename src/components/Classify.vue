@@ -12,15 +12,14 @@
 		 <li v-if="hidd">
 			 <span>------------对不起,您输入的内容不存在------------</span>
 		 </li>
-       <li v-for="(book,index) in bookList" :key="book.id">
-         <router-link :to="{name:'detailsPage',params:{value:getDescribe[index]}}" tag="a"> 
+       <li v-for="(book,index) in bookFilter" :key="book.id">
+         <router-link :to="{name:'detailsPage',params:{value:getDescribe[index]}}" tag="a">
            <div>
-
            <img :src="book.img">
          </div>
          <div class="tilte_li">
            <h4>{{book.name}}</h4>
-           <p class="svg_img">{{book.author}} 
+           <p class="svg_img">{{book.author}}
              <span></span>
              </p>
            <p>￥ {{book.price}}
@@ -48,14 +47,12 @@ export default {
     return {
       msg: 'classify',
       bookList: [],
-
-	   val:'',
+	    val:'',
 		matching:null,
    //加载更多状态
 		loadshow:true,
 		num:4,
-      getDescribe:[]
-
+     getDescribe:[]
     }
   },
   methods:{
@@ -64,15 +61,15 @@ export default {
       axios.get('./static/data.json').then((res) =>{
         // 如果请求成功，将bookList空数组替换为请求到的数组
         this.bookList = res.data;
-
       })
     },
     // 获取数据
     getDescribeObj(){
-       axios.get('./static/data.json').then((resopnse) =>{ 
+       axios.get('./static/data.json').then((resopnse) =>{
          this.getDescribe = resopnse.data
       }).catch(function(error){
         console.error("程序员吃饭去了，刷新试试看!!")
+
       })
     },
      //匹配搜索框的值
