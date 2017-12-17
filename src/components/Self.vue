@@ -7,7 +7,7 @@
         <div></div>
         <div>
           <img src="../../src/assets/12.png">
-          <p>{{userName}}</p>
+          <p>从来不吃草莓</p>
         </div>
         <div class="main-count">
 		  <p @click="perdata">设置个人资料 <span></span></p>
@@ -51,8 +51,7 @@ export default {
         //个人资料显示状态
 		displaydata:false,
        //地址管理显示状态
-    displayaddress:false,
-    userName:""
+		displayaddress:false;
     }
   },
 	methods:{
@@ -76,18 +75,9 @@ export default {
 		    this.displaydata = false
 		},
 		colseAddress(){
-			this.displaydata = false
-    },
-    getUserName(){
-      if(localStorage.getItem('userName')){
-        this.userName = localStorage.getItem('userName')
-      }else{
-         this.userName = "请登录"
-      }
-    }
-	},mounted(){
-    this.getUserName()
-  }
+			this.displayaddress = false
+		}
+	},
 }
 </script>
 <style scoped lang="less">
