@@ -54,7 +54,7 @@
   </form>
 </main>
 	 <div class="Btn Btn_bt">
-		 <button type="submit" class="btn btn-default" @click="btnclick">确认地址</button>
+		 <button type="submit" class="btn btn-default" @click="btnclick">确认修改</button>
 	 </div>
 	  <!--弹出框-->
 	  <popups :shw="shw" :informa="modify"></popups>
