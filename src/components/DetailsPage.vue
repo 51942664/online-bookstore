@@ -72,7 +72,7 @@
         data() {
             return {
                 details: {},
-                describeObj: {}
+                describeObj:''
             }
         }, methods: {
             getDetails() {
@@ -117,12 +117,7 @@
             },
             // 跳转支付页，将本页数据放入缓存.
             buyCommodity() {
-                this.describeObj = {
-                    img: this.$route.params.value.img,
-                    name: this.$route.params.value.name,
-                    author: this.$route.params.value.author,
-                    price: this.$route.params.value.price
-                };
+                this.describeObj = this.$route.params.value.price
                 var describe = JSON.stringify(this.describeObj)
                 localStorage.setItem('buy', describe);
             }
