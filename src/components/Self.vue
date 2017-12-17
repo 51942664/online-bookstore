@@ -26,7 +26,7 @@
     <footer>
       <button>退出登录</button>
     </footer>
-	  <personaldata :displaydata="displaydata" @returnself="returnself"  @colsePerData="colsePerData"></personaldata>
+	  <personaldata :displaydata="displaydata" @returnself="returnself"  @colsePerData="colsePerData" address = "收货地址"></personaldata>
 	  <addressmanage :displayaddress="displayaddress" @returnaddress="returnaddress"  @colseAddress="colseAddress"></addressmanage>
     <Login 
       head-title="登录/注册"
@@ -86,7 +86,7 @@ export default {
       }
     }
 	},mounted(){
-    this.getUserName()
+    this.getUserName();
   }
 }
 </script>
