@@ -26,9 +26,9 @@
     <footer>
       <button>退出登录</button>
     </footer>
-	  <personaldata :displaydata="displaydata" @returnself="returnself"  @colsePerData="colsePerData"></personaldata>
+	  <personaldata :displaydata="displaydata" @returnself="returnself" @colsePerData="colsePerData" ></personaldata>
 	  <addressmanage :displayaddress="displayaddress" @returnaddress="returnaddress"  @colseAddress="colseAddress"></addressmanage>
-    <Login 
+    <Login
       head-title="登录/注册"
     />
   </div>
@@ -42,22 +42,31 @@ import addressmanage from './Address'
 export default {
   name: 'Self',
   components:{
-    Login,
-    personaldata,
-		addressmanage
+       Login,
+       personaldata,
+	   addressmanage
   },
-
   data () {
     return {
+        //个人资料显示状态
 		displaydata:false,
-		displayaddress:false
+       //地址管理显示状态
+		displayaddress:false,
+       //个人资料取值
+//		personData:{
+//			nickname:"",
+//			mailbox:"",
+//			birthday:"",
+//			idnumber:"",
+//			perdescription:""
+//		},
+//		perValues:null
     }
   },
-
 	methods:{
        //显示个人资料
 		perdata(){
-		    this.displaydata = true
+		    this.displaydata = true;
 		},
        //显示修改地址
 		csreceipt(){
@@ -75,9 +84,24 @@ export default {
 		    this.displaydata = false
 		},
 		colseAddress(){
-			this.displaydata = false
+			this.displayaddress = false
 		}
-	}
+	},
+//	computed:{
+//      a(){
+//		  //获取设置个人资料的本地值
+//
+//		  var parstorage = JSON.parse(localStorage.getItem('perstorage'));
+//		  console.log(parstorage)
+//		  if(parstorage === null){
+//			  return this.personData;
+//		  }
+//		  else{
+//			  console.log(parstorage)
+//			  return parstorage;
+//		  }
+//	  }
+//	}
 }
 </script>
 <style scoped lang="less">

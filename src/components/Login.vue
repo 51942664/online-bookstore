@@ -82,7 +82,10 @@
         telTips: false,
         pwdTips: false,
         pwsdTips: false,
-        showLogin:true
+
+        
+        // 做完了改为true
+        showLogin:false
       };
     },
     methods: {
