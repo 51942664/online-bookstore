@@ -6,7 +6,7 @@
     <main>
       <h1>商品信息确认</h1>
       <section class="infor-confirm">
-        <div v-for="(goods,index) in info" :key="goods.id">
+        <div v-for="goods in info" :key="goods.id">
           <h2>价格信息</h2>
           <p class="price">
             <span>商品总价：</span>
@@ -21,7 +21,7 @@
             <span>￥{{orderTotal}}</span>
           </p>
         </div>
-        <div v-for="(rece,index) in info" :key="rece.id">
+        <div v-for="rece in info" :key="rece.id">
           <h2>收货信息</h2>
           <p class="receiv-info address">
             <span>收货地址：</span>

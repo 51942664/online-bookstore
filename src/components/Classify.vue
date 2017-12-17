@@ -52,7 +52,8 @@ export default {
    //加载更多状态
 		loadshow:true,
 		num:4,
-     getDescribe:[]
+      getDescribe:[]
+
     }
   },
   methods:{
@@ -69,7 +70,6 @@ export default {
          this.getDescribe = resopnse.data
       }).catch(function(error){
         console.error("程序员吃饭去了，刷新试试看!!")
-
       })
     },
      //匹配搜索框的值

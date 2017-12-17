@@ -7,7 +7,7 @@
         <div></div>
         <div>
           <img src="../../src/assets/12.png">
-          <p>从来不吃草莓</p>
+          <p>{{userName}}</p>
         </div>
         <div class="main-count">
 		  <p @click="perdata">设置个人资料 <span></span></p>
@@ -51,16 +51,8 @@ export default {
         //个人资料显示状态
 		displaydata:false,
        //地址管理显示状态
-		displayaddress:false,
-       //个人资料取值
-//		personData:{
-//			nickname:"",
-//			mailbox:"",
-//			birthday:"",
-//			idnumber:"",
-//			perdescription:""
-//		},
-//		perValues:null
+    displayaddress:false,
+    userName:""
     }
   },
 	methods:{
@@ -84,24 +76,18 @@ export default {
 		    this.displaydata = false
 		},
 		colseAddress(){
-			this.displayaddress = false
-		}
-	},
-//	computed:{
-//      a(){
-//		  //获取设置个人资料的本地值
-//
-//		  var parstorage = JSON.parse(localStorage.getItem('perstorage'));
-//		  console.log(parstorage)
-//		  if(parstorage === null){
-//			  return this.personData;
-//		  }
-//		  else{
-//			  console.log(parstorage)
-//			  return parstorage;
-//		  }
-//	  }
-//	}
+			this.displaydata = false
+    },
+    getUserName(){
+      if(localStorage.getItem('userName')){
+        this.userName = localStorage.getItem('userName')
+      }else{
+         this.userName = "请登录"
+      }
+    }
+	},mounted(){
+    this.getUserName()
+  }
 }
 </script>
 <style scoped lang="less">
