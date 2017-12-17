@@ -24,11 +24,13 @@
 }
 main{
     width: 100%;
-    height: 632px;
+    height: ~"calc(100%-100px)"; 
+    overflow-x: hidden;
+    overflow-y: auto;
     position: absolute;
     top: -793px;
     background-color: #fff;
-    z-index: 11;
+    // z-index: 11;
     .b-login{
         border-bottom: 1px solid #ccc;
         span{
