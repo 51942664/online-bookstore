@@ -21,30 +21,30 @@
             <span>￥{{orderTotal}}</span>
           </p>
         </div>
-        <div v-for="rece in info" :key="rece.id">
+        <div>
           <h2>收货信息</h2>
           <p class="receiv-info address">
             <span>收货地址：</span>
-            <span>{{rece.address}}</span>
+            <span>{{dataAddress.adminiStration}}</span>
           </p>
           <p class="receiv-info">
             <span>收货人：</span>
-            <span>{{rece.name}}</span>
+            <span>{{dataAddress.fullName}}</span>
           </p>
           <p class="receiv-info">
             <span>邮编</span>
-            <span>{{rece.postcode}}</span>
+            <span>{{dataAddress.postalcode}}</span>
           </p>
           <p class="receiv-info">
             <span>电话</span>
-            <span>{{rece.tel}}</span>
+            <span>{{dataAddress.telephone}}</span>
           </p>
         </div>
-        <div class="modification">
+        <div class="modification"  @click="csreceipt">
           <span>修改地址</span>
           <span></span>
         </div>
-        <div class="modification">
+        <div class="modification" @click="newAddress">
           <span>新增地址</span>
           <span></span>
         </div>
@@ -78,28 +78,53 @@
         </div>
       </section>
     </main>
+    <addressmanage :displayaddress="displayaddress" @returnaddress="returnaddress"  @colseAddress="colseAddress" address = "收货地址" newAddress="新增地址"></addressmanage>
   </div>
 </template>
 
 <script>
 import fontCss from './../styles/fonts/font-awesome.css'
+import addressmanage from './Address'
 export default {
   name: 'Settlement',
   props:['totalPrice'],
+  components:{
+	   addressmanage
+  },
   data () {
+    console.log(JSON.parse(localStorage.getItem('addrestorage')))
     return {
+       //地址管理显示状态
+    displayaddress:false,
+    add:false,
+    revise:true,
       info:[
         {
           price:558,
           delivery:10,
-          address:"四川省 成都市 高新区 锦城大道东段拉德方斯东楼10层2号",
-          name:"从来不吃草莓",
-          postcode:"610000",
-          tel:"18*****7687"
         }
-      ]
+      ],
+      dataAddress:JSON.parse(localStorage.getItem('addrestorage'))
     }
   },
+  methods:{
+       //显示修改地址
+		csreceipt(){
+			this.displayaddress = true
+    },
+    newAddress(){
+      this.displayaddress = true;
+      this.revise = false;
+		},
+    //返回
+		returnaddress(){
+			this.displayaddress = false
+		},
+		//确定修改成功
+		colseAddress(){
+			this.displaydata = false
+    },
+	},
   computed:{
     orderTotal(item){
       var num = 0;
