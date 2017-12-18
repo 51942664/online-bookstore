@@ -6,7 +6,6 @@ import Shopping from '@/components/Shopping'
 import Self from '@/components/Self'
 
 import Settlement from '@/components/Settlement'
-
 import PerData from '@/components/PerData'
 
 import Address from '@/components/Address'

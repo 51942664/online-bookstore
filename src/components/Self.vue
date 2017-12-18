@@ -26,9 +26,9 @@
     <footer>
       <button>退出登录</button>
     </footer>
-	  <personaldata :displaydata="displaydata" @returnself="returnself"  @colsePerData="colsePerData" address = "收货地址"></personaldata>
-	  <addressmanage :displayaddress="displayaddress" @returnaddress="returnaddress"  @colseAddress="colseAddress"></addressmanage>
-    <Login 
+	  <personaldata :displaydata="displaydata" @returnself="returnself"  @colsePerData="colsePerData"></personaldata>
+	  <addressmanage :displayaddress="displayaddress" @returnaddress="returnaddress"  @colseAddress="colseAddress" address = "收货地址"></addressmanage>
+    <Login
       head-title="登录/注册"
     />
   </div>
@@ -42,23 +42,23 @@ import addressmanage from './Address'
 export default {
   name: 'Self',
   components:{
-    Login,
-    personaldata,
-		addressmanage
+       Login,
+       personaldata,
+	   addressmanage
   },
-
   data () {
     return {
+        //个人资料显示状态
 		displaydata:false,
+       //地址管理显示状态
     displayaddress:false,
     userName:""
     }
   },
-
 	methods:{
        //显示个人资料
 		perdata(){
-		    this.displaydata = true
+		    this.displaydata = true;
 		},
        //显示修改地址
 		csreceipt(){
@@ -85,7 +85,8 @@ export default {
          this.userName = "请登录"
       }
     }
-	},mounted(){
+  },
+  mounted(){
     this.getUserName();
   }
 }
