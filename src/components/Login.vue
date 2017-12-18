@@ -114,6 +114,7 @@
           this.telFlag2 = false;
           this.telFlag1 = true;
           this.telTips = true;
+          this. telValue = ""
         }
       },
       //注册界面的密码验证
@@ -206,7 +207,10 @@
           pawd: local.pawdValue
         };
         //获取本地存储的数据
-        var loginInfo = localStorage.getItem("signUpUserInfo");
+        if(!localStorage.getItem('signUpUserInfo')){
+          alert('账号或密码错误')
+        }else{
+ var loginInfo = localStorage.getItem("signUpUserInfo");
 
         //把数据转换成数组
         var arr = JSON.parse(loginInfo),
@@ -221,7 +225,7 @@
             break;
           }
         }
-        //判断是否和本地存储的值一样
+         //判断是否和本地存储的值一样
         if (searchStatus && arr[i].pwd === this.pawdValue) {
           localStorage.setItem('userName',arr[i].name);
           alert("登录成功");
@@ -233,6 +237,9 @@
           alert("账号或密码错误");
           this.pawdValue = "";
         }
+        }
+       
+       
       }
     },
     mounted(){
