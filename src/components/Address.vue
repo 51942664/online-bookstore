@@ -4,7 +4,8 @@
     <header>
 		<div>
 			<span @click="$emit('returnaddress')">&lt;</span>
-			<h3>收货地址</h3>
+			<h3 v-if="revise">{{address}}</h3>
+      <h3 v-else>{{newAddress}}</h3>
 		</div>
     </header>
 <main>
@@ -67,16 +68,17 @@
 	import popups from './Popups'
 	export default {
 		name: 'Address',
-		props:['displayaddress'],
+		props:['displayaddress','address','newAddress'],
 		components:{
 			popups
 		},
 		data () {
 			return {
-          successs:false,
-          popupHiddSate:false,
-		//	地址管理储存修改对象
-		  addDataObj:{
+        revise:true,
+        successs:false,
+        popupHiddSate:false,
+		    //	地址管理储存修改对象
+		    addDataObj:{
 			  fullName:"",
 			  telephone:"",
 			  postalcode:"",
@@ -103,7 +105,7 @@
        getaddreData(){
            if(localStorage.getItem('addrestorage')){
                var addreData = JSON.parse(localStorage.getItem('addrestorage'));
-               console.log(addreData)
+              //  console.log(addreData)
                this.addDataObj = {
 				   fullName:addreData.fullName,
 				   telephone:addreData.telephone,
