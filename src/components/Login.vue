@@ -2,6 +2,7 @@
   <div class="login" v-if="showLogin" >
     <header>
       <h3>{{headTitle}}</h3>
+      <i>&lt;</i>
     </header>
     <main>
       <div class="b-login">
