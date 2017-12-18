@@ -6,19 +6,19 @@
     <main>
       <h1>商品信息确认</h1>
       <section class="infor-confirm">
-        <div v-for="goods in info" :key="goods.id">
+        <div>
           <h2>价格信息</h2>
           <p class="price">
             <span>商品总价：</span>
-            <span>￥{{goods.price}}</span>
+            <span>￥{{countPrice}}</span>
           </p>
           <p class="price">
             <span>运送费：</span>
-            <span>￥{{goods.delivery}}</span>
+            <span>￥10</span>
           </p>
           <p class="order-total">
             <span>订单总计：</span>
-            <span>￥{{orderTotal}}</span>
+            <span>￥{{countPrice + 10}}</span>
           </p>
         </div>
         <div>
@@ -92,19 +92,13 @@ export default {
 	   addressmanage
   },
   data () {
-    console.log(JSON.parse(localStorage.getItem('addrestorage')))
     return {
        //地址管理显示状态
     displayaddress:false,
     add:false,
     revise:true,
-      info:[
-        {
-          price:558,
-          delivery:10,
-        }
-      ],
-      dataAddress:JSON.parse(localStorage.getItem('addrestorage'))
+      dataAddress:JSON.parse(localStorage.getItem('addrestorage')),
+      countPrice:JSON.parse(localStorage.getItem('totalPrice'))
     }
   },
   methods:{
@@ -114,7 +108,6 @@ export default {
     },
     newAddress(){
       this.displayaddress = true;
-      this.revise = false;
 		},
     //返回
 		returnaddress(){
@@ -124,16 +117,7 @@ export default {
 		colseAddress(){
 			this.displaydata = false
     },
-	},
-  computed:{
-    orderTotal(item){
-      var num = 0;
-      this.info.forEach(function (item) {
-        num = parseFloat(item.price) + parseFloat(item.delivery);
-      });
-      return num;
-    }
-  }
+	}
 }
 </script>
 
