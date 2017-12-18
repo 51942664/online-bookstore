@@ -27,7 +27,7 @@
       <button>退出登录</button>
     </footer>
 	  <personaldata :displaydata="displaydata" @returnself="returnself"  @colsePerData="colsePerData"></personaldata>
-	  <addressmanage :displayaddress="displayaddress" @returnaddress="returnaddress"  @colseAddress="colseAddress" address = "收货地址"></addressmanage>
+	  <addressmanage :displayaddress="displayaddress" true="state" @returnaddress="returnaddress"  @colseAddress="colseAddress" address = "收货地址"></addressmanage>
     <Login
       head-title="登录/注册"
     />
@@ -44,7 +44,7 @@ export default {
   components:{
        Login,
        personaldata,
-	   addressmanage
+     addressmanage,
   },
   data () {
     return {
@@ -69,7 +69,7 @@ export default {
 			this.displaydata = false
 		},
 		returnaddress(){
-			this.displayaddress = false
+      this.displayaddress = false;
 		},
 		//确定修改成功
 		colsePerData() {
