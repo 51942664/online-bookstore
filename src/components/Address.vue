@@ -100,7 +100,7 @@
       },
         // 确认修改按钮触发的事件
        btnclick(){
-         this.popupHiddSate = true
+         this.popupHiddSate = true;
        },
        getaddreData(){
            if(localStorage.getItem('addrestorage')){
