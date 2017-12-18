@@ -17,7 +17,7 @@
                     <span v-show="delFlag">完成</span>
                     </span>
                 </section>
-                <li class="goods-item" v-for="item in cart" :key="item.id">
+                <li class="goods-item" v-for="(item,index) in cart" :key="item.id">
                     <div class="item-selector">
                         <div class="icon-selector" v-bind:class="{'selector-active': item.checked}" @click="selectGoods(item)">
                             <svg t="1504061791962" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2922" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12">
@@ -36,9 +36,10 @@
                             <span>¥<b>{{ item.price }}</b></span>
                         </div>
                         <div class="goods-num">
-                            <div class="num-btn" @click="changeQty(true, item)">+</div>
-                            <input class="show-num" type="number" :value="quantity">
-                            <div class="num-btn" @click="changeQty(false, item)">-</div>
+                            <div class="num-btn" @click="changeQty(true,item)">+</div>
+                            <!-- <input class="show-num" type="number" :value="item.quantity"> -->
+                            <div class="show-num">{{quantity}}</div>
+                            <div class="num-btn" @click="changeQty(false,item)">-</div>
                         </div>
                     </div>
                 </li>
@@ -58,7 +59,8 @@
                 </div>
                 <span>全选</span>
             </div>
-            <router-link :to="{name: 'settlement'}" class="action-btn buy-btn" tag="div" :total-price="totalPrice" >去结算({{ selectedNum }})</router-link>
+            <!-- <router-link :to="{name: 'settlement'}" class="action-btn buy-btn" tag="div" :total-price="totalPrice" ><span>去结算</span>({{ selectedNum }})</router-link> -->
+            <span class="action-btn buy-btn" @click="paymentPage" :total-price="totalPrice" >去结算({{ selectedNum }})</span>
             <div class="action-btn del-btn" @click="delGoods">删除({{ selectedNum }})</div>
             <div class="total">合计：<span>¥<b>{{ totalPrice }}</b></span></div>
         </div>
@@ -69,19 +71,17 @@
 <script>
 export default {
   name: 'Shopping',
+  
   data() {
-// console.log(arr.length)
     return {
         msg: 'shopping',
         checkAllFlag: false,
         selectedNum: 0,
-        quantity: 1,
         delFlag: false,
+        quantity:1,
         shoppingShow:false,
-        cart: JSON.parse(localStorage.getItem('describe'))
-        
-    }
-    
+        cart:JSON.parse(localStorage.getItem('describe'))
+    } 
   },
   methods: {
       stateQuery(){
@@ -97,17 +97,19 @@ export default {
         /**
          * @method 增减单品数量
          * @param {Boolean} isAdd 是否增加
-         * @param {Number} index 商品下标
+         * @param {Number} item 商品下标
          */
         changeQty(isAdd, item) {
-            var num = this.quantity;
-            if (isAdd && num < 5) {
-                this.$set(item, 'quantity', ++num);
-            } else if (!isAdd && num > 1) {
-                this.$set(item, 'quantity', --num);
-            }
-
-            this.$set(item,(item.price * num).toFixed(1));
+            var num = item.quantity;
+            var price_count = item.price;
+            // console.log(num)
+                if (isAdd && num < 5) {
+                    // ++num
+                this.$set(item,'quantity', ++num);
+                } else if (!isAdd && num > 1) {
+                    this.$set(item,'quantity',--num);
+                }
+            this.$set(item,(item.price * ++num).toFixed(1));
         },
 
         /**
@@ -169,6 +171,21 @@ export default {
             this.selectedNum = 0;
             this.checkAllFlag = false;
             this.delFlag = !this.delFlag;
+        },
+        paymentPage(){
+            var totalPrice = JSON.stringify(this.totalPrice);
+             console.log(totalPrice)
+         localStorage.setItem('totalPrice',totalPrice);
+            if(!localStorage.getItem("addrestorage")){
+                alert("资料不完善，请先完善资料(修改地址)");
+                this.$router.push({
+                    path: "/self"
+                 });
+            }else{
+                this.$router.push({
+                    path: "/settlement"
+                 });
+            }
         }
     },
     mounted(){
@@ -181,13 +198,14 @@ export default {
         totalPrice() {
             var num = 0;
             this.cart.forEach(function (item) {
-                // console.log(this.quantity)
                 item.checked && (num += parseFloat(item.price));
             });
             return num;
+             
+      },
         }
     }
-}
+
 </script>
 
 <style lang="less">
