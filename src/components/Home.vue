@@ -57,7 +57,7 @@ import Swiper from "swiper";
 require("./../scripts/home");
 export default {
   name: "Home",
-  props: ['test'],
+  props: ["test"],
   components: {
     BookList,
     Describe
@@ -68,9 +68,9 @@ export default {
       newBook: [],
       eidtBook: [],
       hotBook: [],
-      bookdetails:{},
+      bookdetails: {},
       show: false,
-      index:''
+      index: ""
     };
   },
   methods: {
@@ -105,16 +105,19 @@ export default {
           console.error("程序猿睡着了0.0");
         });
     },
-    showDetails(idx,witch) {
+    showDetails(idx, witch) {
       this.show = !this.show;
       this.index = idx;
-     var $this = this;
+      var $this = this;
       console.log(idx);
-      axios.get("./../../static/homeData.json").then(function(response){
-        $this.bookdetails = response.data[witch][idx];
-      }).catch(function(error){
-        console.error("程序猿睡着了0.0");
-      })
+      axios
+        .get("./../../static/homeData.json")
+        .then(function(response) {
+          $this.bookdetails = response.data[witch][idx];
+        })
+        .catch(function(error) {
+          console.error("程序猿睡着了0.0");
+        });
     },
     close() {
       this.show = !this.show;

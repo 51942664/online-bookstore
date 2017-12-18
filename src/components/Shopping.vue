@@ -69,144 +69,142 @@
 
 <script>
 export default {
-  name: 'Shopping',
-  
+  name: "Shopping",
+
   data() {
     return {
-        msg: 'shopping',
-        checkAllFlag: false,
-        selectedNum: 0,
-        delFlag: false,
-        quantity:1,
-        shoppingShow:false,
-        cart:JSON.parse(localStorage.getItem('describe'))
-    } 
+      msg: "shopping",
+      checkAllFlag: false,
+      selectedNum: 0,
+      delFlag: false,
+      quantity: 1,
+      shoppingShow: false,
+      cart: JSON.parse(localStorage.getItem("describe"))
+    };
   },
   methods: {
-      stateQuery(){
-        if(localStorage.getItem('userName')){
-          this.shoppingShow = true;
-        }else{
-            alert("该用户还没登录或注册，请登录或注册")
-          this.$router.push({
-              path: "/self"
-            });
-        }
-      },
-        /**
+    stateQuery() {
+      if (localStorage.getItem("userName")) {
+        this.shoppingShow = true;
+      } else {
+        alert("该用户还没登录或注册，请登录或注册");
+        this.$router.push({
+          path: "/self"
+        });
+      }
+    },
+    /**
          * @method 增减单品数量
          * @param {Boolean} isAdd 是否增加
          * @param {Number} item 商品下标
          */
-        changeQty(isAdd, item) {
-            var num = item.quantity;
-            var price_count = item.price;
-            // console.log(num)
-                if (isAdd && num < 5) {
-                    // ++num
-                this.$set(item,'quantity', ++num);
-                } else if (!isAdd && num > 1) {
-                    this.$set(item,'quantity',--num);
-                }
-            this.$set(item,(item.price * ++num).toFixed(1));
-        },
+    changeQty(isAdd, item) {
+      var num = item.quantity;
+      var price_count = item.price;
+      // console.log(num)
+      if (isAdd && num < 5) {
+        // ++num
+        this.$set(item, "quantity", ++num);
+      } else if (!isAdd && num > 1) {
+        this.$set(item, "quantity", --num);
+      }
+      this.$set(item, (item.price * ++num).toFixed(1));
+    },
 
-        /**
+    /**
          * @method 选择商品
          * @param {Object} item 商品对象
          */
-        selectGoods(item) {
-            // 状态值取反，并根据状态值对selectedNum进行加减
-            item.checked = !item.checked;
-            item.checked ? ++this.selectedNum : --this.selectedNum;
-            // 设置全选
-            this.selectedNum === this.cart.length 
-                ? this.checkAllFlag = true 
-                : this.checkAllFlag = false
-        },
+    selectGoods(item) {
+      // 状态值取反，并根据状态值对selectedNum进行加减
+      item.checked = !item.checked;
+      item.checked ? ++this.selectedNum : --this.selectedNum;
+      // 设置全选
+      this.selectedNum === this.cart.length
+        ? (this.checkAllFlag = true)
+        : (this.checkAllFlag = false);
+    },
 
-        /**
+    /**
          * @method 全选
          */
-        checkAll() {
-            var self = this;
-            this.checkAllFlag = !this.checkAllFlag;
+    checkAll() {
+      var self = this;
+      this.checkAllFlag = !this.checkAllFlag;
 
-            this.cart.forEach(function (item) {
-                if (self.checkAllFlag) {
-                    // 全选
-                    item.checked = true;
-                    self.selectedNum = self.cart.length;
-                } else {
-                    // 取消全选
-                    item.checked = false;
-                    self.selectedNum = 0;
-                }
-            });
-        },
+      this.cart.forEach(function(item) {
+        if (self.checkAllFlag) {
+          // 全选
+          item.checked = true;
+          self.selectedNum = self.cart.length;
+        } else {
+          // 取消全选
+          item.checked = false;
+          self.selectedNum = 0;
+        }
+      });
+    },
 
-        /**
+    /**
          * @method 切换删除按钮
          */
-        toggleDelBtn() {
-            this.delFlag = !this.delFlag;
-        },
+    toggleDelBtn() {
+      this.delFlag = !this.delFlag;
+    },
 
-        /**
+    /**
          * @method 删除商品
          */
-        delGoods() {
-            /**
+    delGoods() {
+      /**
              * !提示：
              * 每次遍历删除数组元素时，会减少数组长度，所以不能缓存length
              * 也不能用forEach方法，因为它会自动缓存数组的长度
              * 这里还可以用filter
              */
-            var cart = this.cart;
-            this.cart = cart.filter(function (item) {
-                return !item.checked
-            });
-            // 重置 被选商品数量、全选状态、删除状态
-            this.selectedNum = 0;
-            this.checkAllFlag = false;
-            this.delFlag = !this.delFlag;
-        },
-        paymentPage(){
-            var totalPrice = JSON.stringify(this.totalPrice);
-             console.log(totalPrice)
-         localStorage.setItem('totalPrice',totalPrice);
-            if(!localStorage.getItem("addrestorage")){
-                alert("资料不完善，请先完善资料(修改地址)");
-                this.$router.push({
-                    path: "/self"
-                 });
-            }else{
-                this.$router.push({
-                    path: "/settlement"
-                 });
-            }
-        }
+      var cart = this.cart;
+      this.cart = cart.filter(function(item) {
+        return !item.checked;
+      });
+      // 重置 被选商品数量、全选状态、删除状态
+      this.selectedNum = 0;
+      this.checkAllFlag = false;
+      this.delFlag = !this.delFlag;
     },
-    mounted(){
-        this.stateQuery();
-    },
-    computed: {
-        /**
+    paymentPage() {
+      var totalPrice = JSON.stringify(this.totalPrice);
+      console.log(totalPrice);
+      localStorage.setItem("totalPrice", totalPrice);
+      if (!localStorage.getItem("addrestorage")) {
+        alert("资料不完善，请先完善资料(修改地址)");
+        this.$router.push({
+          path: "/self"
+        });
+      } else {
+        this.$router.push({
+          path: "/settlement"
+        });
+      }
+    }
+  },
+  mounted() {
+    this.stateQuery();
+  },
+  computed: {
+    /**
          * @method 已选商品的总额
          */
-        totalPrice() {
-            var num = 0;
-            this.cart.forEach(function (item) {
-                item.checked && (num += parseFloat(item.price));
-            });
-            return num;
-             
-      },
-        }
+    totalPrice() {
+      var num = 0;
+      this.cart.forEach(function(item) {
+        item.checked && (num += parseFloat(item.price));
+      });
+      return num;
     }
-
+  }
+};
 </script>
 
 <style lang="less">
-  @import "../styles/Shopping.less";
+@import "../styles/Shopping.less";
 </style>

@@ -42,92 +42,91 @@
 
 <script>
 export default {
-  name: 'Classify',
-  data () {
+  name: "Classify",
+  data() {
     return {
-      msg: 'classify',
+      msg: "classify",
       bookList: [],
-	    val:'',
-		matching:null,
-   //加载更多状态
-		loadshow:true,
-		num:4,
-      getDescribe:[]
-
-    }
+      val: "",
+      matching: null,
+      //加载更多状态
+      loadshow: true,
+      num: 4,
+      getDescribe: []
+    };
   },
-  methods:{
-     //使用axios进行数据请求
-    loadBookInfo(){
-      axios.get('./static/data.json').then((res) =>{
+  methods: {
+    //使用axios进行数据请求
+    loadBookInfo() {
+      axios.get("./static/data.json").then(res => {
         // 如果请求成功，将bookList空数组替换为请求到的数组
         this.bookList = res.data;
-      })
+      });
     },
     // 获取数据
-    getDescribeObj(){
-       axios.get('./static/data.json').then((resopnse) =>{
-         this.getDescribe = resopnse.data
-      }).catch(function(error){
-        console.error("程序员吃饭去了，刷新试试看!!")
-      })
+    getDescribeObj() {
+      axios
+        .get("./static/data.json")
+        .then(resopnse => {
+          this.getDescribe = resopnse.data;
+        })
+        .catch(function(error) {
+          console.error("程序员吃饭去了，刷新试试看!!");
+        });
     },
-     //匹配搜索框的值
-	  searchBook(val){
+    //匹配搜索框的值
+    searchBook(val) {
       //如果输入值为空的时候等于原数组
-		  if(val.trim() === ""){
-           this.matching = this.bookList;
-		  }
-		  else {
-		  // 将满足条件的对象数组项返回为一个新的对象那数组
-			this.matching = this.bookList.filter((item) =>{
-				// 将搜索框输入的值作为正则搜索条件
-             const matchReg = new RegExp(val,'ig');
-				// 匹配书名或作者名
-				return matchReg.test(item.name) || matchReg.test(item.author);
-			})
-		  }
-	  },
-	  loadm(){
-		  this.num += 4
-	  }
+      if (val.trim() === "") {
+        this.matching = this.bookList;
+      } else {
+        // 将满足条件的对象数组项返回为一个新的对象那数组
+        this.matching = this.bookList.filter(item => {
+          // 将搜索框输入的值作为正则搜索条件
+          const matchReg = new RegExp(val, "ig");
+          // 匹配书名或作者名
+          return matchReg.test(item.name) || matchReg.test(item.author);
+        });
+      }
+    },
+    loadm() {
+      this.num += 4;
+    }
   },
-computed: {
-	// 匹配的图书列表
-	bookFilter(){
-		// 如果输入值为空格的时候
-	    if(!this.matching){
-			this.loadshow = true
-			// 显示原有图书列表
-		return this.bookList.slice(0,this.num);
-		}
-		// 如果存在输入匹配的结果
-		else if(this.matching.length){
-			// 获得匹配项数组
-			this.loadshow = false
-			return this.matching;
-		}
-	},
-  //判断输入框状态
-	hidd(){
-	    if(this.bookFilter){
-	        return false
-		}else {
-	        return true
-		}
-	}
-
-},
+  computed: {
+    // 匹配的图书列表
+    bookFilter() {
+      // 如果输入值为空格的时候
+      if (!this.matching) {
+        this.loadshow = true;
+        // 显示原有图书列表
+        return this.bookList.slice(0, this.num);
+      } else if (this.matching.length) {
+        // 如果存在输入匹配的结果
+        // 获得匹配项数组
+        this.loadshow = false;
+        return this.matching;
+      }
+    },
+    //判断输入框状态
+    hidd() {
+      if (this.bookFilter) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  },
   created() {
     // 执行书库列表加载
     this.loadBookInfo();
   },
-  mounted(){
-    this. getDescribeObj();
+  mounted() {
+    this.getDescribeObj();
   }
-}
+};
 </script>
 
 <style scoped lang="less">
-  @import "../styles/Classify.less";
+@import "../styles/Classify.less";
 </style>

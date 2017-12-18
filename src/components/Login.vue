@@ -56,161 +56,159 @@
 </template>
 
 <script>
-  export default {
-    name: "Login",
-    props: ["headTitle"],
-    data() {
-      return {
-        phoneValue: "",
-        pawdValue: "",
-        telValue: "",
-        nameValue: "",
-        pwdValue: "",
-        pwsdValue: "",
-        isShow1: true,
-        isShow2: false,
-        phoneFlag1: true,
-        phoneFlag2: false,
-        telFlag1: true,
-        telFlag2: false,
-        pwdFlag1: true,
-        pwdFlag2: false,
-        pwsdFlag1: true,
-        pwsdFlag2: false,
-        phoneTips: false,
-        telTips: false,
-        pwdTips: false,
-        pwsdTips: false,
+export default {
+  name: "Login",
+  props: ["headTitle"],
+  data() {
+    return {
+      phoneValue: "",
+      pawdValue: "",
+      telValue: "",
+      nameValue: "",
+      pwdValue: "",
+      pwsdValue: "",
+      isShow1: true,
+      isShow2: false,
+      phoneFlag1: true,
+      phoneFlag2: false,
+      telFlag1: true,
+      telFlag2: false,
+      pwdFlag1: true,
+      pwdFlag2: false,
+      pwsdFlag1: true,
+      pwsdFlag2: false,
+      phoneTips: false,
+      telTips: false,
+      pwdTips: false,
+      pwsdTips: false,
 
-        
-        // 做完了改为true
-        showLogin:false
-      };
+      // 做完了改为true
+      showLogin: false
+    };
+  },
+  methods: {
+    stateQuery() {
+      if (localStorage.getItem("userName")) {
+        this.showLogin = false;
+      } else {
+        this.showLogin = true;
+      }
     },
-    methods: {
-      stateQuery(){
-        if(localStorage.getItem('userName')){
-          this.showLogin = false;
-        }else{
-          this.showLogin = true;
+    tab() {
+      this.isShow1 = true;
+      this.isShow2 = false;
+    },
+    tabb() {
+      this.isShow2 = true;
+      this.isShow1 = false;
+    },
+    //注册界面的手机号码验证
+    isCrTel(telValue) {
+      var reg = new RegExp(/^1[34578]\d{9}$/);
+      if (reg.test(telValue)) {
+        this.telFlag1 = false;
+        this.telFlag2 = true;
+        this.telTips = false;
+      } else {
+        this.telFlag2 = false;
+        this.telFlag1 = true;
+        this.telTips = true;
+        this.telValue = "";
+      }
+    },
+    //注册界面的密码验证
+    isPasswd(pwdValue) {
+      var patrn = new RegExp(/^(\w){6,20}$/);
+      if (!patrn.test(pwdValue)) {
+        this.pwdFlag1 = true;
+        this.pwdFlag2 = false;
+        this.pwdTips = true;
+      } else {
+        this.pwdFlag2 = true;
+        this.pwdFlag1 = false;
+        this.pwdTips = false;
+      }
+    },
+    //注册界面的密码验证
+    isCrPwsd(pwsdValue) {
+      var patrn = new RegExp(/^(\w){6,20}$/);
+      if (!patrn.test(pwsdValue)) {
+        this.pwsdFlag1 = true;
+        this.pwsdFlag2 = false;
+        this.pwsdTips = true;
+      } else {
+        this.pwsdFlag2 = true;
+        this.pwsdFlag1 = false;
+        this.pwsdTips = false;
+      }
+    },
+    //注册页面当点击确认按钮把值传入本地存储
+    setLocal() {
+      const self = this;
+      var selfObj = {
+        tel: self.telValue,
+        name: self.nameValue,
+        pwd: self.pwdValue,
+        pwsd: self.pwsdValue
+      };
+
+      function add(infos) {
+        if (!localStorage.getItem("signUpUserInfo")) {
+          localStorage.setItem("signUpUserInfo", "[]");
         }
-      },
-      tab() {
-        this.isShow1 = true;
-        this.isShow2 = false;
-      },
-      tabb() {
-        this.isShow2 = true;
-        this.isShow1 = false;
-      },
-      //注册界面的手机号码验证
-      isCrTel(telValue) {
-        var reg = new RegExp(/^1[34578]\d{9}$/);
-        if (reg.test(telValue)) {
-          this.telFlag1 = false;
-          this.telFlag2 = true;
-          this.telTips = false;
-        } else {
-          this.telFlag2 = false;
-          this.telFlag1 = true;
-          this.telTips = true;
-          this. telValue = ""
-        }
-      },
-      //注册界面的密码验证
-      isPasswd(pwdValue) {
-        var patrn = new RegExp(/^(\w){6,20}$/);
-        if (!patrn.test(pwdValue)) {
+        var userInfoData = JSON.parse(localStorage.getItem("signUpUserInfo"));
+        userInfoData.push(infos);
+        userInfoData = JSON.stringify(userInfoData);
+        localStorage.setItem("signUpUserInfo", userInfoData);
+      }
+      //获取本地存储的数据
+      var loginInfo = localStorage.getItem("signUpUserInfo");
+      //把数据转换成数组
+      var arr = JSON.parse(loginInfo);
+      // 判断注册界面的两次密码是否输入一致
+      if (this.telValue != "" && this.pwdValue != "" && this.pwsdValue != "") {
+        if (this.pwdValue != this.pwsdValue) {
+          alert("密码输入不一致");
+          this.pwdValue = "";
           this.pwdFlag1 = true;
           this.pwdFlag2 = false;
-          this.pwdTips = true;
-        } else {
-          this.pwdFlag2 = true;
-          this.pwdFlag1 = false;
-          this.pwdTips = false;
-
-        }
-      },
-      //注册界面的密码验证
-      isCrPwsd(pwsdValue) {
-        var patrn = new RegExp(/^(\w){6,20}$/);
-        if (!patrn.test(pwsdValue)) {
           this.pwsdFlag1 = true;
           this.pwsdFlag2 = false;
-          this.pwsdTips = true;
+          this.pwsdValue = "";
         } else {
-          this.pwsdFlag2 = true;
-          this.pwsdFlag1 = false;
-          this.pwsdTips = false;
+          alert("注册成功");
+          this.$router.push({
+            path: "/"
+          });
+          localStorage.setItem("userName", this.nameValue);
+          add(selfObj);
+          (this.telValue = ""),
+            (this.nameValue = ""),
+            (this.pwdValue = ""),
+            (this.pwsdValue = ""),
+            (this.telFlag1 = true),
+            (this.telFlag2 = false),
+            (this.pwdFlag1 = true),
+            (this.pwdFlag2 = false),
+            (this.pwsdFlag1 = true),
+            (this.pwsdFlag2 = false);
         }
-      },
-      //注册页面当点击确认按钮把值传入本地存储   
-      setLocal() {
-        const self = this;
-        var selfObj = {
-          tel: self.telValue,
-          name: self.nameValue,
-          pwd: self.pwdValue,
-          pwsd: self.pwsdValue
-        };
-
-        function add(infos) {
-          if (!localStorage.getItem('signUpUserInfo')) {
-            localStorage.setItem('signUpUserInfo', "[]");
-          }
-          var userInfoData = JSON.parse(localStorage.getItem('signUpUserInfo'));
-          userInfoData.push(infos);
-          userInfoData = JSON.stringify(userInfoData);
-          localStorage.setItem('signUpUserInfo', userInfoData);
-        }
-        //获取本地存储的数据
+      } else {
+        alert("账号和密码不能为空");
+      }
+    },
+    //登录界面的实现方法
+    loginLocal() {
+      var local = this;
+      var loginObj = {
+        phone: local.phoneValue,
+        pawd: local.pawdValue
+      };
+      //获取本地存储的数据
+      if (!localStorage.getItem("signUpUserInfo")) {
+        alert("账号或密码错误");
+      } else {
         var loginInfo = localStorage.getItem("signUpUserInfo");
-        //把数据转换成数组
-        var arr = JSON.parse(loginInfo);
-        // 判断注册界面的两次密码是否输入一致
-        if (this.telValue != "" && this.pwdValue != "" && this.pwsdValue != "") {
-          if (this.pwdValue != this.pwsdValue) {
-            alert("密码输入不一致");
-            this.pwdValue = "";
-            this.pwdFlag1 = true;
-            this.pwdFlag2 = false;
-            this.pwsdFlag1 = true;
-            this.pwsdFlag2 = false;
-            this.pwsdValue = "";
-          } else {
-            alert("注册成功");
-            this.$router.push({
-              path: "/"
-            });
-            localStorage.setItem('userName',this.nameValue);
-            add(selfObj);
-            this.telValue = "",
-              this.nameValue = "",
-              this.pwdValue = "",
-              this.pwsdValue = "",
-              this.telFlag1 = true,
-              this.telFlag2 = false,
-              this.pwdFlag1 = true,
-              this.pwdFlag2 = false,
-              this.pwsdFlag1 = true,
-              this.pwsdFlag2 = false;
-          }
-        } else {
-          alert("账号和密码不能为空");
-        }
-      },
-      //登录界面的实现方法
-      loginLocal() { 
-        var local = this;
-        var loginObj = {
-          phone: local.phoneValue,
-          pawd: local.pawdValue
-        };
-        //获取本地存储的数据
-        if(!localStorage.getItem('signUpUserInfo')){
-          alert('账号或密码错误')
-        }else{
- var loginInfo = localStorage.getItem("signUpUserInfo");
 
         //把数据转换成数组
         var arr = JSON.parse(loginInfo),
@@ -225,9 +223,9 @@
             break;
           }
         }
-         //判断是否和本地存储的值一样
+        //判断是否和本地存储的值一样
         if (searchStatus && arr[i].pwd === this.pawdValue) {
-          localStorage.setItem('userName',arr[i].name);
+          localStorage.setItem("userName", arr[i].name);
           alert("登录成功");
           this.$router.push({
             path: "/"
@@ -237,17 +235,15 @@
           alert("账号或密码错误");
           this.pawdValue = "";
         }
-        }
-       
-       
       }
-    },
-    mounted(){
-      this.stateQuery()
     }
-  };
+  },
+  mounted() {
+    this.stateQuery();
+  }
+};
 </script>
 
 <style scoped lang="less">
-  @import "../styles/Login.less";
+@import "../styles/Login.less";
 </style>

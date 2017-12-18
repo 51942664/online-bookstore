@@ -83,44 +83,44 @@
 </template>
 
 <script>
-import fontCss from './../styles/fonts/font-awesome.css'
-import addressmanage from './ModifyAddress'
+import fontCss from "./../styles/fonts/font-awesome.css";
+import addressmanage from "./ModifyAddress";
 export default {
-  name: 'Settlement',
-  props:['totalPrice'],
-  components:{
-	   addressmanage
+  name: "Settlement",
+  props: ["totalPrice"],
+  components: {
+    addressmanage
   },
-  data () {
+  data() {
     return {
-       //地址管理显示状态
-    displayaddress:false,
-    add:false,
-    revise:true,
-      dataAddress:JSON.parse(localStorage.getItem('addrestorage')),
-      countPrice:JSON.parse(localStorage.getItem('totalPrice'))
-    }
+      //地址管理显示状态
+      displayaddress: false,
+      add: false,
+      revise: true,
+      dataAddress: JSON.parse(localStorage.getItem("addrestorage")),
+      countPrice: JSON.parse(localStorage.getItem("totalPrice"))
+    };
   },
-  methods:{
-       //显示修改地址
-		csreceipt(){
-			this.displayaddress = true
-    },
-    newAddress(){
+  methods: {
+    //显示修改地址
+    csreceipt() {
       this.displayaddress = true;
-		},
-    //返回
-		returnaddress(){
-			this.displayaddress = false
-		},
-		//确定修改成功
-		colseAddress(){
-			this.displaydata = false
     },
-	}
-}
+    newAddress() {
+      this.displayaddress = true;
+    },
+    //返回
+    returnaddress() {
+      this.displayaddress = false;
+    },
+    //确定修改成功
+    colseAddress() {
+      this.displaydata = false;
+    }
+  }
+};
 </script>
 
 <style scoped lang="less">
-  @import "../styles/Settlement.less";
+@import "../styles/Settlement.less";
 </style>

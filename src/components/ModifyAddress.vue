@@ -65,76 +65,75 @@
 </template>
 
 <script>
-	import popups from './Popups'
-	export default {
-		name: 'ModifyAddress',
-		props:['displayaddress','address','newAddress'],
-		components:{
-			popups
-		},
-		data () {
-			return {
-        revise:true,
-        successs:false,
-        popupHiddSate:false,
-		    //	地址管理储存修改对象
-		    addDataObj:{
-			  fullName:"",
-			  telephone:"",
-			  postalcode:"",
-			  province:"四川省",
-			  cityData:"成都市",
-			  areaData:"高新区",
-			  adminiStration:""
-		  }
-		}
-	},
-		methods:{
-      succModify(){
-        this.popupHiddSate=false;
-        this.$emit('colseAddress');
-		  /*地址管理存入本地，以供修改*/
-        //数据储存
-		  var addrestorage = JSON.stringify(this.addDataObj);
-         localStorage.setItem('addrestorage',addrestorage);
-      },
-        // 确认修改按钮触发的事件
-       btnclick(){
-         this.popupHiddSate = true;
-       },
-       getaddreData(){
-           if(localStorage.getItem('addrestorage')){
-               var addreData = JSON.parse(localStorage.getItem('addrestorage'));
-              //  console.log(addreData)
-               this.addDataObj = {
-				   fullName:addreData.fullName,
-				   telephone:addreData.telephone,
-				   postalcode:addreData.postalcode,
-				   province:addreData.province,
-				   cityData:addreData.cityData,
-				   areaData:addreData.areaData,
-				   adminiStration:addreData.adminiStration
-			   }
-		   }else {
-			 this.addDataObj = {
-				   fullName:"",
-					   telephone:"",
-					   postalcode:"",
-				       province:"四川省",
-				       cityData:"成都市",
-				       areaData:"高新区",
-					   adminiStration:""
-			   }
-		   }
-	   }
-
-	},
-		mounted(){
-			this.getaddreData()
-		}
-}
+import popups from "./Popups";
+export default {
+  name: "ModifyAddress",
+  props: ["displayaddress", "address", "newAddress"],
+  components: {
+    popups
+  },
+  data() {
+    return {
+      revise: true,
+      successs: false,
+      popupHiddSate: false,
+      //	地址管理储存修改对象
+      addDataObj: {
+        fullName: "",
+        telephone: "",
+        postalcode: "",
+        province: "四川省",
+        cityData: "成都市",
+        areaData: "高新区",
+        adminiStration: ""
+      }
+    };
+  },
+  methods: {
+    succModify() {
+      this.popupHiddSate = false;
+      this.$emit("colseAddress");
+      /*地址管理存入本地，以供修改*/
+      //数据储存
+      var addrestorage = JSON.stringify(this.addDataObj);
+      localStorage.setItem("addrestorage", addrestorage);
+    },
+    // 确认修改按钮触发的事件
+    btnclick() {
+      this.popupHiddSate = true;
+    },
+    getaddreData() {
+      if (localStorage.getItem("addrestorage")) {
+        var addreData = JSON.parse(localStorage.getItem("addrestorage"));
+        //  console.log(addreData)
+        this.addDataObj = {
+          fullName: addreData.fullName,
+          telephone: addreData.telephone,
+          postalcode: addreData.postalcode,
+          province: addreData.province,
+          cityData: addreData.cityData,
+          areaData: addreData.areaData,
+          adminiStration: addreData.adminiStration
+        };
+      } else {
+        this.addDataObj = {
+          fullName: "",
+          telephone: "",
+          postalcode: "",
+          province: "四川省",
+          cityData: "成都市",
+          areaData: "高新区",
+          adminiStration: ""
+        };
+      }
+    }
+  },
+  mounted() {
+    this.getaddreData();
+  }
+};
 </script>
 
 <style scoped lang="less">
-  @import "../styles/PerData.less";
+@import "../styles/PerData.less";
 </style>

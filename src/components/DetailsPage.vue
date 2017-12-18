@@ -65,77 +65,79 @@
     </div>
 </template>
 <script>
-    export default {
-        name: "DetailsPage",
-        data() {
-            return {
-                details: {},
-                describeObj: ''
-            }
-        }, methods: {
-            getDetails() {
-                this.details = this.$route.params.value;
-            },
-            // 添加数据函数;
-            add(key, infos) {
-                var Data = null;
-                if (localStorage[key]) {
-                    Data = JSON.parse(localStorage[key]);
-                } else {
-                    Data = [];
-                }
-                Data.push(infos);
-                localStorage[key] = JSON.stringify(Data);
-            },
-            addShoppingCar() {
-                // 获取本地数据;
-                this.describeObj = {
-                    img: this.$route.params.value.img,
-                    name: this.$route.params.value.name,
-                    author: this.$route.params.value.author,
-                    price: this.$route.params.value.price
-                };
-                // 判断本地缓存是否已经有值;
-                if (!localStorage.getItem('describe')) {
-                    this.add('describe', this.describeObj);
-                    alert("添加成功");
-                } else {
-                    var name = this.describeObj.name
-                    var getdescrube = JSON.parse(localStorage.getItem('describe')),
-                        getdescrubeLength = getdescrube.length;
-                    for (var i = 0; i < getdescrubeLength; i++) {
-                        if (name === getdescrube[i].name) {
-                            alert("亲，已经在购物车，请勿重复添加哦");
-                            return;
-                        } else {
-                            this.add('describe', this.describeObj);
-                        }
-                    }
-                }
-            },
-            // 跳转支付页，将本页数据放入缓存.
-            buyCommodity() {
-                this.describeObj = this.$route.params.value.price
-                var describe = JSON.stringify(this.describeObj)
-                localStorage.setItem('buy', describe);
-                var totalPrice = JSON.stringify(this.totalPrice);
-                localStorage.setItem('totalPrice', totalPrice);
-                if (!localStorage.getItem("addrestorage")) {
-                    alert("资料不完善，请先完善资料(修改地址)");
-                    this.$router.push({
-                        path: "/self"
-                    });
-                } else {
-                    this.$router.push({
-                        path: "/settlement"
-                    });
-                }
-            }
-        }, mounted() {
-            this.getDetails();
-        }
+export default {
+  name: "DetailsPage",
+  data() {
+    return {
+      details: {},
+      describeObj: ""
     };
+  },
+  methods: {
+    getDetails() {
+      this.details = this.$route.params.value;
+    },
+    // 添加数据函数;
+    add(key, infos) {
+      var Data = null;
+      if (localStorage[key]) {
+        Data = JSON.parse(localStorage[key]);
+      } else {
+        Data = [];
+      }
+      Data.push(infos);
+      localStorage[key] = JSON.stringify(Data);
+    },
+    addShoppingCar() {
+      // 获取本地数据;
+      this.describeObj = {
+        img: this.$route.params.value.img,
+        name: this.$route.params.value.name,
+        author: this.$route.params.value.author,
+        price: this.$route.params.value.price
+      };
+      // 判断本地缓存是否已经有值;
+      if (!localStorage.getItem("describe")) {
+        this.add("describe", this.describeObj);
+        alert("添加成功");
+      } else {
+        var name = this.describeObj.name;
+        var getdescrube = JSON.parse(localStorage.getItem("describe")),
+          getdescrubeLength = getdescrube.length;
+        for (var i = 0; i < getdescrubeLength; i++) {
+          if (name === getdescrube[i].name) {
+            alert("亲，已经在购物车，请勿重复添加哦");
+            return;
+          } else {
+            this.add("describe", this.describeObj);
+          }
+        }
+      }
+    },
+    // 跳转支付页，将本页数据放入缓存.
+    buyCommodity() {
+      this.describeObj = this.$route.params.value.price;
+      var describe = JSON.stringify(this.describeObj);
+      localStorage.setItem("buy", describe);
+      var totalPrice = JSON.stringify(this.totalPrice);
+      localStorage.setItem("totalPrice", totalPrice);
+      if (!localStorage.getItem("addrestorage")) {
+        alert("资料不完善，请先完善资料(修改地址)");
+        this.$router.push({
+          path: "/self"
+        });
+      } else {
+        this.$router.push({
+          path: "/settlement"
+        });
+      }
+    }
+  },
+  mounted() {
+    this.getDetails();
+  }
+};
 </script>
 <style lang="less">
-    @import "./../styles/detailspage.less";
+@import "./../styles/detailspage.less";
 </style>
