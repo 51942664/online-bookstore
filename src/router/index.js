@@ -8,7 +8,7 @@ import Self from '@/components/Self'
 import Settlement from '@/components/Settlement'
 import PerData from '@/components/PerData'
 
-import Address from '@/components/Address'
+import ModifyAddress from '@/components/ModifyAddress'
 import DetailsPage from '@/components/DetailsPage'
 
 Vue.use(Router)
@@ -50,9 +50,9 @@ export default new Router({
 
     },
 	  {
-	  path: '/address',
-	  name: 'address',
-	  component: Address
+	  path: '/ModifyAddress',
+	  name: 'ModifyAddress',
+	  component: ModifyAddress
   },
   {
 	  path: '/detailsPage',

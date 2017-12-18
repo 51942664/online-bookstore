@@ -59,7 +59,6 @@
                 </div>
                 <span>全选</span>
             </div>
-            <!-- <router-link :to="{name: 'settlement'}" class="action-btn buy-btn" tag="div" :total-price="totalPrice" ><span>去结算</span>({{ selectedNum }})</router-link> -->
             <span class="action-btn buy-btn" @click="paymentPage" :total-price="totalPrice" >去结算({{ selectedNum }})</span>
             <div class="action-btn del-btn" @click="delGoods">删除({{ selectedNum }})</div>
             <div class="total">合计：<span>¥<b>{{ totalPrice }}</b></span></div>

@@ -40,9 +40,7 @@
             <p>{{details.name}}</p>
             <div class="btn">
                 <span @click="addShoppingCar">加入购物车</span>
-                 <router-link :to="{name:'settlement'}" tag="a">
                 <span @click="buyCommodity">立即购买</span>
-                </router-link>
             </div>
         </div>
         <!-- 内容摘要 -->
@@ -72,7 +70,7 @@
         data() {
             return {
                 details: {},
-                describeObj:''
+                describeObj: ''
             }
         }, methods: {
             getDetails() {
@@ -120,6 +118,18 @@
                 this.describeObj = this.$route.params.value.price
                 var describe = JSON.stringify(this.describeObj)
                 localStorage.setItem('buy', describe);
+                var totalPrice = JSON.stringify(this.totalPrice);
+                localStorage.setItem('totalPrice', totalPrice);
+                if (!localStorage.getItem("addrestorage")) {
+                    alert("资料不完善，请先完善资料(修改地址)");
+                    this.$router.push({
+                        path: "/self"
+                    });
+                } else {
+                    this.$router.push({
+                        path: "/settlement"
+                    });
+                }
             }
         }, mounted() {
             this.getDetails();

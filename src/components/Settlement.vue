@@ -84,7 +84,7 @@
 
 <script>
 import fontCss from './../styles/fonts/font-awesome.css'
-import addressmanage from './Address'
+import addressmanage from './ModifyAddress'
 export default {
   name: 'Settlement',
   props:['totalPrice'],

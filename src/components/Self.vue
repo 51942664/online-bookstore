@@ -38,7 +38,7 @@
 
 import Login from "./Login"
 import personaldata from './PerData'
-import addressmanage from './Address'
+import addressmanage from './ModifyAddress'
 export default {
   name: 'Self',
   components:{
