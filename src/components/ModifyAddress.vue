@@ -67,7 +67,7 @@
 <script>
 	import popups from './Popups'
 	export default {
-		name: 'Address',
+		name: 'ModifyAddress',
 		props:['displayaddress','address','newAddress'],
 		components:{
 			popups
